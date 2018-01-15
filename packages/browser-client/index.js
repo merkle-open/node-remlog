@@ -17,8 +17,8 @@ class BrowserClient {
   getScheme(data = {}) {
     return new Scheme({
       version: pkg.version,
-      host: 'tbd',
-      shortMessage: '',
+      host: window.location.host,
+      shortMessage: data.shortMessage,
       fullMessage: data.fullMessage, 
       timestamp: new Date().toISOString(),
       level: data.level,
@@ -28,7 +28,9 @@ class BrowserClient {
     });
   }
   
-  send(data = {}) {
+  send(message, data = {}) {
+    data.shortMessage = message;
+    
     const img = document.createElement("img");
     const payload = this.getScheme(data).serialize();
     
