@@ -29,6 +29,14 @@ class Scheme {
     validate() {
         validateFields(this.data);
     }
+    
+    clean() {
+        for (var prop in this.data) { 
+            if (this.data[prop] === null || this.data[prop] === undefined) {
+                delete this.data[prop];
+            }
+        }
+    }
 
     serialize() {
         // TODO: Implement serialization to string for logfiles
