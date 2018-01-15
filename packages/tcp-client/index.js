@@ -1,6 +1,11 @@
 const { Socket } = require('net');
 const { ConsoleLogger } = require('@remlog/log');
 
+const EVENTS = {
+    DATA: 'data',
+    CLOSE: 'close'
+};
+
 const logger = new ConsoleLogger('TCPClient');
 
 const clients = [];
@@ -22,11 +27,11 @@ const connect = (config = {}, handler = () => {}) => {
         logger.success(`Connected to ${host}:${port} established`);
     });
 
-    client.on(data, data => {
+    client.on(EVENTS.DATA, data => {
         handler.apply(client, [data]);
     });
 
-    client.on('close', () => {
+    client.on(EVENTS.CLOSE, () => {
         logger.success(`Connection to ${host}:${port} closed`);
     });
 
@@ -36,4 +41,5 @@ const connect = (config = {}, handler = () => {}) => {
 exports = module.exports = {
     connect,
     clients,
+    EVENTS,
 };
