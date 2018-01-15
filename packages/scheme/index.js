@@ -38,4 +38,5 @@ class Scheme {
 
 exports = module.exports = {
     validateFields,
+    Scheme,
 };
