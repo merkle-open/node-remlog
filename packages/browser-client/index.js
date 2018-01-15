@@ -15,7 +15,7 @@ class BrowserClient {
   }
   
   getScheme(data = {}) {
-    return new Scheme({
+    const scheme = new Scheme({
       version: pkg.version,
       host: window.location.host,
       shortMessage: data.shortMessage,
@@ -26,6 +26,10 @@ class BrowserClient {
       line: data.line,
       file: data.file
     });
+    
+    scheme.clean();
+    
+    return scheme;
   }
   
   send(message, data = {}) {
