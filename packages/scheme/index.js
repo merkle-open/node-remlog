@@ -1,5 +1,5 @@
-const { computedFields, requiredFields, optionalFields } = require("./fields");
-const { isCustomField } = require("./utils");
+const { computedFields, requiredFields, optionalFields } = require('./fields');
+const { isCustomField } = require('./utils');
 
 const validateFields = (data = {}) => {
     const receivedKeys = Object.keys(data);
@@ -10,7 +10,7 @@ const validateFields = (data = {}) => {
         } else if (!!~optionalFields.indexOf(key) || !!~requiredFields.indexOf(key)) {
             return true;
         } else if (!isCustomField(key)) {
-            throw new Error(`Custom fields like ${key} must start with a dollar and alphanumeric chars`);
+            throw new TypeError(`Custom fields like ${key} must start with a dollar and alphanumeric chars`);
         }
     });
 };
@@ -29,9 +29,9 @@ class Scheme {
     validate() {
         validateFields(this.data);
     }
-    
+
     clean() {
-        for (var prop in this.data) { 
+        for (var prop in this.data) {
             if (this.data[prop] === null || this.data[prop] === undefined) {
                 delete this.data[prop];
             }
@@ -39,8 +39,12 @@ class Scheme {
     }
 
     serialize() {
-        // TODO: Implement serialization to string for logfiles
         return JSON.stringify(this.data);
+    }
+
+    toString() {
+        // TODO: Generate message
+        return this.serialize();
     }
 }
 
