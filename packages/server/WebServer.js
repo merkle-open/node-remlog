@@ -1,58 +1,114 @@
-const restify = require('restify');
-const { ConsoleLogger } = require('@remlog/log');
-
-const { ConsoleLogger } = require('@remlog/log');
+const path = require('path');
+const { ConsoleTransport } = require('@remlog/transports');
+const express = require('express');
+const compression = require('compression');
+const bodyParser = require('body-parser');
+const helmet = require('helmet');
 const pkg = require('./package.json');
 
 const defaultConfig = {
     port: 8189,
 };
 
-const logger = new ConsoleLogger('WebServer');
+const logger = new ConsoleTransport('WebServer');
 
 class WebServer {
     constructor(config = defaultConfig) {
         this.config = config;
-        this.instance = restify.createServer();
+        this.instance = express({
+            name: `${pkg.name} v${pkg.version}`,
+        });
     }
-    
+
+    trace(req, res, next) {
+        const { remote, payload } = req.query;
+
+        logger.info(`Incoming trace from ${req.hostname}/${req.ip}`);
+
+        next();
+    }
+
+    attachMiddleware() {
+        this.instance.use(helmet());
+
+        // compress all responses except for a single header
+        this.instance.use(
+            compression({
+                filter: (req, res) => {
+                    if (req.headers['X-No-Compression']) {
+                        return false;
+                    }
+
+                    return compression.filter(req, res);
+                },
+            })
+        );
+
+        // parse application/x-www-form-urlencoded
+        this.instance.use(
+            bodyParser.urlencoded({
+                extended: false,
+            })
+        );
+
+        // parse application/json
+        this.instance.use(bodyParser.json());
+
+        this.instance.use((req, res, next) => {
+            res.setHeader('X-RemLog-Client', req.ip);
+            res.setHeader('X-RemLog-Version', `${pkg.version}`);
+            next();
+        });
+    }
+
     attachRouter() {
-        this.instance.use(restify.plugins.throttle({
-            burst: 10,  // max 10 concurrent requests (if tokens)
-            rate: 0.5,  // steady state: 1 request / 2 seconds
-            ip: true,   // throttle per IP address
-        }));
-        
-        /**
-         * TODO: Add middlewares:
-         * - restify-cors-middleware
-         * - 
-         */
-        this.instance
-            .pre((req, res, next) => {
-                res.charSet('utf-8');
-                res.setHeader('X-RemLog-Inflight', this.instance.inflightRequests);
-                res.setHeader('X-RemLog-Version', pkg.version);
-            })
-            .get('/logs', (req, res, next) => {
-                // TODO: Return all logs in an array
-                next();
-            })
-            .get('/trace.jpg', (req, res, next) => {
-                // TODO: Read file from fs and send it via res.sendRaw()
-                next();
-            })
-            .post('/trace', (req, res, next) => {
-                // TODO: Implement ajax mechanism
-                next();
+        this.instance.get('/', (req, res, next) => {
+            res.send(`${pkg.name} v${pkg.version}`);
+        });
+
+        this.instance.get('/tracer.jpg', (req, res, next) => {
+            this.trace(req, res, () => {
+                res.status(200).sendFile(path.join(__dirname, 'src', 'tracer.jpg'), {
+                    cacheControl: true,
+                    maxAge: 0,
+                    headers: {
+                        'Content-Type': 'image/jpeg',
+                    },
+                });
             });
+        });
+
+        this.instance.post('/trace', (req, res, next) => {
+            this.trace(req, res, () => {
+                res.status(200).json({
+                    timestamp: new Date().toISOString(),
+                    error: null,
+                });
+            });
+        });
+
+        this.instance.use((err, req, res, next) => {
+            res.status(500);
+            if (req.xhr) {
+                res.json({
+                    timestamp: new Date().toISOString(),
+                    error: err.message || err || 'Unknown error',
+                });
+            } else {
+                res.send(err);
+            }
+        });
+    }
 
     start() {
         const { port } = this.config;
         const { name, url } = this.instance;
 
+        this.attachMiddleware();
+        this.attachRouter();
+
         this.instance.listen(port, () => {
-            logger.success(`${name} is listening at ${port} ...`);
+            logger.success(`RemLog webserver is listening at port ${port} ...`);
         });
     }
 }

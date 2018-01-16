@@ -1,4 +1,4 @@
-const { ConsoleLogger } = require('@remlog/log');
+const { ConsoleTransport } = require('@remlog/transports');
 const { createServer } = require('./create');
 
 const defaultConfig = {
@@ -35,7 +35,7 @@ class TCPServer {
             });
 
             connection.on('data', data => {
-                logger.info(`Received data from ${remoteAddress}:`, data);
+                logger.info(`Received data from ${remoteAddress}: ` + JSON.stringify(data));
             });
 
             connection.on('close', () => {
