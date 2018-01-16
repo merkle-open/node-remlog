@@ -1,0 +1,18 @@
+{
+    "name": "@remlog/cli",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "bin": {
+        "remlog": "bin/remlog-cli.js"
+    },
+    "scripts": {
+        "test": "exit "
+    },
+    "author": "Jan Biasi <biasijan@gmail.com>",
+    "license": "MIT",
+    "dependencies": {
+        "commander": "2.13.0",
+        "@remlog/server": "1.0.0"
+    }
+}
