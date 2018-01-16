@@ -10,11 +10,13 @@ program
     .command('server <type>')
     .option('-p, --port <port>', 'The targeted port of the server instance')
     .action((type, command) => {
+        const { port } = command;
+
         switch (type) {
             case 'tcp':
-                return startTCPServer(command);
+                return startTCPServer(port);
             case 'proxy':
-                return startProxyServer(command);
+                return startProxyServer(port);
             default:
                 throw new Error(`Unknown server type "${type}", allowed types are 'tcp' and 'proxy'.`);
         }

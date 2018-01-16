@@ -1,14 +1,14 @@
-const { TCPServer, WebServer } = require('@remlog/server');
+const { TCPServer, ProxyServer } = require('@remlog/server');
 
-const startProxyServer = (options = {}) => {
-    const server = new WebServer(options);
+const startProxyServer = (port = ProxyServer.defaultConfig.port) => {
+    const server = new ProxyServer({ port });
     server.start();
 
     return server;
 };
 
-const startTCPServer = (options = {}) => {
-    const server = new TCPServer(options);
+const startTCPServer = (port = TCPServer.defaultConfig.port) => {
+    const server = new TCPServer({ port });
     server.start();
 
     return server;
