@@ -1,11 +1,31 @@
 {
-  "name": "@remlog/browser-client",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Jan Biasi <biasijan@gmail.com>",
-  "license": "MIT"
+    "name": "@remlog/browser-client",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "ava --tap | tap-diff",
+        "test:watch": "ava --watch",
+        "develop": "webpack --config webpack.config.js --watch",
+        "build": "webpack -p --config webpack.config.js"
+    },
+    "author": "Jan Biasi <biasijan@gmail.com>",
+    "license": "MIT",
+    "dependencies": {
+        "@remlog/scheme": "1.0.0",
+        "babel-runtime": "^6.26.0"
+    },
+    "devDependencies": {
+        "ava": "^0.24.0",
+        "babel-core": "^6.26.0",
+        "babel-loader": "^7.1.2",
+        "babel-preset-env": "^1.6.1",
+        "tap-diff": "^0.1.1",
+        "uglifyjs-webpack-plugin": "^1.1.6",
+        "webpack": "^3.10.0"
+    },
+    "ava": {
+        "require": ["babel-register", "./test/helpers/setup-browser-env.js"],
+        "babel": "inherit"
+    }
 }
