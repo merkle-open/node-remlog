@@ -1,11 +1,17 @@
 const { TCPServer, WebServer } = require('@remlog/server');
 
 const startProxyServer = (options = {}) => {
-    new WebServer(options).start();
+    const server = new WebServer(options);
+    server.start();
+
+    return server;
 };
 
 const startTCPServer = (options = {}) => {
-    new TCPServer(options).start();
+    const server = new TCPServer(options);
+    server.start();
+
+    return server;
 };
 
 exports = module.exports = {
