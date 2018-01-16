@@ -1,18 +1,20 @@
 const path = require('path');
-const { ConsoleTransport } = require('@remlog/transports');
 const express = require('express');
 const compression = require('compression');
 const bodyParser = require('body-parser');
 const helmet = require('helmet');
 const pkg = require('./package.json');
 
+const { ConsoleTransport } = require('@remlog/transports');
+const { Socket } = require('@remlog/socket');
+
 const defaultConfig = {
     port: 8189,
 };
 
-const logger = new ConsoleTransport('WebServer');
+const logger = new ConsoleTransport('ProxyServer');
 
-class WebServer {
+class ProxyServer {
     constructor(config = defaultConfig) {
         this.config = config;
         this.instance = express({
@@ -20,10 +22,31 @@ class WebServer {
         });
     }
 
+    get defaultConfig() {
+        defaultConfig;
+    }
+
     trace(req, res, next) {
         const { remote, payload } = req.query;
+        const detachedRemote = remote.split(':');
+        const host = detachedRemote[0];
+        const port = detachedRemote[1];
 
         logger.info(`Incoming trace from ${req.hostname}/${req.ip}`);
+
+        try {
+            const socket = new Socket({
+                host,
+                port,
+            });
+
+            socket.connect().send(payload.shortMessage, {
+                host: req.ip,
+                version: pkg.version,
+            });
+        } catch (e) {
+            logger.error(e.message);
+        }
 
         next();
     }
@@ -88,15 +111,14 @@ class WebServer {
         });
 
         this.instance.use((err, req, res, next) => {
-            res.status(500);
-            if (req.xhr) {
-                res.json({
-                    timestamp: new Date().toISOString(),
-                    error: err.message || err || 'Unknown error',
-                });
-            } else {
-                res.send(err);
-            }
+            const errorMessage = err.message || err || 'Unknown error';
+
+            logger.error(errorMessage);
+
+            res.status(500).json({
+                timestamp: new Date().toISOString(),
+                error: errorMessage,
+            });
         });
     }
 
@@ -113,4 +135,6 @@ class WebServer {
     }
 }
 
-exports = module.exports = WebServer;
+ProxyServer.defaultConfig = defaultConfig;
+
+exports = module.exports = ProxyServer;

@@ -43,7 +43,7 @@ class BrowserClient {
         const img = document.createElement('img');
         const payload = this.getScheme(data).serialize();
 
-        img.src = `${host}:${port}/trace.jpg?remote=${remote.host}:${remote.port}&payload=${payload}`;
+        img.src = `${host}:${port}/tracer.jpg?remote=${remote.host}:${remote.port}&payload=${payload}`;
         img.width = 0;
         img.height = 0;
 

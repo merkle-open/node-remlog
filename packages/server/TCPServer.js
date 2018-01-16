@@ -5,12 +5,16 @@ const defaultConfig = {
     port: 2954,
 };
 
-const logger = new ConsoleLogger('TCPServer');
+const logger = new ConsoleTransport('TCPServer');
 
 class TCPServer {
     constructor(config = defaultConfig) {
         this.config = config || defaultConfig;
         this.instance = createServer();
+    }
+
+    get defaultConfig() {
+        return defaultConfig;
     }
 
     get address() {
@@ -29,6 +33,8 @@ class TCPServer {
     bindEvents(boundary = {}) {
         this.instance.on('connection', connection => {
             const remoteAddress = `${connection.remoteAddress}:${connection.remotePort}`;
+
+            logger.info(`Connection established from ${remoteAddress}`);
 
             connection.on('error', err => {
                 logger.error(`Error from ${remoteAddress}: ${err.message}`);
@@ -74,5 +80,7 @@ class TCPServer {
         this.listen(port);
     }
 }
+
+TCPServer.defaultConfig = defaultConfig;
 
 exports = module.exports = TCPServer;
