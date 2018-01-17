@@ -1,20 +1,16 @@
-const { TCPServer, ProxyServer } = require('@remlog/server');
+const { Server } = require('@remlog/server');
 
-const startProxyServer = (port = ProxyServer.defaultConfig.port) => {
-    const server = new ProxyServer({ port });
-    server.start();
+const start = (port = Server.defaultConfig.port, transport) => {
+    const server = new Server({
+        port,
+        transport,
+    });
 
-    return server;
-};
-
-const startTCPServer = (port = TCPServer.defaultConfig.port) => {
-    const server = new TCPServer({ port });
     server.start();
 
     return server;
 };
 
 exports = module.exports = {
-    startProxyServer,
-    startTCPServer,
+    start,
 };

@@ -5,10 +5,6 @@ import pkg from './package.json';
 const defaultConfig = {
     host: '0.0.0.0',
     port: '80',
-    remote: {
-        host: '0.0.0.0',
-        port: '80',
-    },
 };
 
 class BrowserClient {
@@ -21,7 +17,7 @@ class BrowserClient {
             version: pkg.version,
             host: window.location.host,
             client: 'BrowserClient',
-            agent: navigator.userAgent,
+            userAgent: navigator.userAgent,
             shortMessage: data.shortMessage,
             fullMessage: data.fullMessage,
             timestamp: new Date().toISOString(),

@@ -17,19 +17,19 @@ class Transport {
         const scheme = new Scheme(payload);
         const validation = scheme.validate();
 
-        if (validation.error) {
-            this.logger.error(validation.error.message);
+        if (validation.length >= 0) {
+            validation.forEach((validationItem, index) => {
+                this.logger.error(`[#${index + 1}] ${validationItem.error.message}`);
+            });
 
             return {
-                valid: false,
-                error: validation.error,
+                error: validation,
                 scheme,
             };
         }
 
         return {
-            valid: true,
-            error: null,
+            error: [],
             scheme,
         };
     }

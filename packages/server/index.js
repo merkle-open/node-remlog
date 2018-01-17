@@ -1,7 +1,5 @@
-const TCPServer = require('./TCPServer');
-const ProxyServer = require('./ProxyServer');
+const Server = require('./Server');
 
 exports = module.exports = {
-    TCPServer,
-    ProxyServer,
+    Server,
 };

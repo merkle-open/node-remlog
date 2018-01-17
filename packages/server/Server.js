@@ -4,22 +4,24 @@ const compression = require('compression');
 const bodyParser = require('body-parser');
 const helmet = require('helmet');
 const pkg = require('./package.json');
-
-const { ConsoleTransport } = require('@remlog/transports');
-const { Socket } = require('@remlog/socket');
+const { Logger } = require('@remlog/debug');
+const { ConsoleTransport, getTransportNameFromId, getTransportById } = require('@remlog/transports');
 
 const defaultConfig = {
     port: 8189,
+    transport: ConsoleTransport.id,
 };
 
-const logger = new ConsoleTransport('ProxyServer');
+const logger = new Logger('Server');
 
-class ProxyServer {
+class Server {
     constructor(config = defaultConfig) {
         this.config = config;
-        this.instance = express({
-            name: `${pkg.name} v${pkg.version}`,
-        });
+        this.transportId = config.transport || defaultConfig.transport;
+        this.instance = express();
+
+        const SelectedTransport = getTransportById(config.transport);
+        this.transport = new SelectedTransport();
     }
 
     get defaultConfig() {
@@ -27,23 +29,11 @@ class ProxyServer {
     }
 
     trace(req, res, next) {
-        const { remote, payload } = req.query;
-        const detachedRemote = remote.split(':');
-        const host = detachedRemote[0];
-        const port = detachedRemote[1];
-
-        logger.info(`Incoming trace from ${req.hostname}/${req.ip}`);
+        const { payload } = req.query;
 
         try {
-            const socket = new Socket({
-                host,
-                port,
-            });
-
-            socket.connect().send(payload.shortMessage, {
-                host: req.ip,
-                version: pkg.version,
-            });
+            logger.info(`Incoming trace from ${req.hostname}/${req.ip}`);
+            this.transport.trace(payload);
         } catch (e) {
             logger.error(e.message);
         }
@@ -79,7 +69,7 @@ class ProxyServer {
 
         this.instance.use((req, res, next) => {
             res.setHeader('X-RemLog-Client', req.ip);
-            res.setHeader('X-RemLog-Version', `${pkg.version}`);
+            res.setHeader('X-RemLog-Server-Version', `${pkg.version}`);
             next();
         });
     }
@@ -91,13 +81,8 @@ class ProxyServer {
 
         this.instance.get('/tracer.jpg', (req, res, next) => {
             this.trace(req, res, () => {
-                res.status(200).sendFile(path.join(__dirname, 'src', 'tracer.jpg'), {
-                    cacheControl: true,
-                    maxAge: 0,
-                    headers: {
-                        'Content-Type': 'image/jpeg',
-                    },
-                });
+                res.setHeader('Content-Type', 'image/jpeg');
+                res.status(200).sendFile(path.join(__dirname, 'src', 'tracer.jpg'));
             });
         });
 
@@ -130,11 +115,13 @@ class ProxyServer {
         this.attachRouter();
 
         this.instance.listen(port, () => {
-            logger.success(`RemLog webserver is listening at port ${port} ...`);
+            logger.success(
+                `Server is listening at port ${port} with transport to ${getTransportNameFromId(this.transportId)} ...`
+            );
         });
     }
 }
 
-ProxyServer.defaultConfig = defaultConfig;
+Server.defaultConfig = defaultConfig;
 
-exports = module.exports = ProxyServer;
+exports = module.exports = Server;

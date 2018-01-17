@@ -2,24 +2,16 @@
 
 const program = require('commander');
 const pkg = require('../package.json');
-const { startProxyServer, startTCPServer } = require('../index');
+const { start } = require('../index');
 
 program.version(`${pkg.version}`);
 
 program
-    .command('server <type>')
+    .command('server')
     .option('-p, --port <port>', 'The targeted port of the server instance')
-    .action((type, command) => {
-        const { port } = command;
-
-        switch (type) {
-            case 'tcp':
-                return startTCPServer(port);
-            case 'proxy':
-                return startProxyServer(port);
-            default:
-                throw new Error(`Unknown server type "${type}", allowed types are 'tcp' and 'proxy'.`);
-        }
+    .option('-t, --transport <transport>', 'Select a custom transport for the server, default: Console')
+    .action(command => {
+        return start(command.port, command.transport);
     });
 
 program

@@ -7,9 +7,9 @@
         "test": "exit 0"
     },
     "dependencies": {
-        "@remlog/transports": "1.0.0",
-        "@remlog/socket": "1.0.0",
+        "@remlog/debug": "1.0.0",
         "@remlog/scheme": "1.0.0",
+        "@remlog/transports": "1.0.0",
         "body-parser": "1.18.2",
         "compression": "1.7.1",
         "express": "4.16.2",
