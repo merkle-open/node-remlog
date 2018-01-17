@@ -78,7 +78,7 @@ logger.send('something went wrong!', {
 });
 ```
 
-### CLI
+### CLI
 
 ###### Contents
 
