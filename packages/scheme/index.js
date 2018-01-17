@@ -1,20 +1,6 @@
 const { computedFields, requiredFields, optionalFields } = require('./fields');
 const { isCustomField } = require('./utils');
 
-const validateFields = (data = {}) => {
-    const receivedKeys = Object.keys(data);
-
-    receivedKeys.forEach(key => {
-        if (!!~computedFields.indexOf(key)) {
-            throw new Error(`${key} is a computed field and cannot be set manually.`);
-        } else if (!!~optionalFields.indexOf(key) || !!~requiredFields.indexOf(key)) {
-            return true;
-        } else if (!isCustomField(key)) {
-            throw new TypeError(`Custom fields like ${key} must start with a dollar and alphanumeric chars`);
-        }
-    });
-};
-
 /**
  * Defining the main transaction data-bags between
  * the client and the server
@@ -26,13 +12,38 @@ class Scheme {
         this.data = data;
     }
 
+    get() {
+        return this.data;
+    }
+
     validate() {
-        validateFields(this.data);
+        const receivedKeys = Object.keys(this.data);
+        const errors = [];
+
+        receivedKeys.forEach(key => {
+            if (!!~computedFields.indexOf(key)) {
+                errors.push({
+                    key,
+                    error: new Error(`The key ${key} is a computed field and cannot be set manually.`),
+                });
+            } else if (!!~optionalFields.indexOf(key) || !!~requiredFields.indexOf(key)) {
+                // Do nothing, valid value
+            } else if (!isCustomField(key)) {
+                errors.push({
+                    key,
+                    error: TypeError(`Custom fields like ${key} must start with a dollar and alphanumeric chars`),
+                });
+            }
+        });
+
+        return errors;
     }
 
     clean() {
-        for (var prop in this.data) {
-            if (this.data[prop] === null || this.data[prop] === undefined) {
+        for (const prop in this.data) {
+            const value = this.data[prop];
+
+            if (value === null || value === undefined) {
                 delete this.data[prop];
             }
         }
@@ -43,12 +54,10 @@ class Scheme {
     }
 
     toString() {
-        // TODO: Generate message
-        return this.serialize();
+        return `Scheme { [${Object.keys(this.data).join(', ')}] }`;
     }
 }
 
 exports = module.exports = {
-    validateFields,
     Scheme,
 };
