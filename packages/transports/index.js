@@ -1,6 +1,7 @@
 const ConsoleTransport = require('./Console');
 const FileSystemTransport = require('./FileSystem');
 const MongoDBTransport = require('./MongoDB');
+const pkg = require('./package.json');
 
 const getTransportById = (transportId = '') => {
     if (typeof transportId !== 'string') {
@@ -19,8 +20,12 @@ const getTransportById = (transportId = '') => {
     }
 };
 
+const getTransportNameFromId = (transportId = '') => transportId.replace(`${pkg.name}/`, '');
+
 exports = module.exports = {
     ConsoleTransport,
     FileSystemTransport,
     MongoDBTransport,
+    getTransportNameFromId,
+    getTransportById,
 };
