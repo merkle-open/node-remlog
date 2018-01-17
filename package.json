@@ -1,12 +1,12 @@
 {
-	"devDependencies": {
-		"lerna": "^2.0.0"
-	},
-	"name": "@remlog/scheme",
-	"version": "1.0.0",
-	"main": "index.js",
-	"repository": "https://github.com/janbiasi/remlog.git",
-	"author": "Jan Biasi <jan.biasi@namics.com>",
-	"license": "MIT",
-	"private": false
+    "devDependencies": {
+        "lerna": "^2.0.0"
+    },
+    "name": "@remlog/monorepo",
+    "version": "1.0.0",
+    "main": "index.js",
+    "repository": "https://github.com/janbiasi/remlog.git",
+    "author": "Jan Biasi <biasijan@gmail.com>",
+    "license": "MIT",
+    "private": false
 }
