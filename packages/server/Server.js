@@ -1,11 +1,19 @@
+const fs = require('fs');
 const path = require('path');
 const express = require('express');
 const compression = require('compression');
 const bodyParser = require('body-parser');
 const helmet = require('helmet');
 const pkg = require('./package.json');
+
 const { Logger } = require('@remlog/debug');
-const { ConsoleTransport, getTransportNameFromId, getTransportById } = require('@remlog/transports');
+const { Scheme } = require('@remlog/scheme');
+const {
+    ConsoleTransport,
+    getTransportNameFromId,
+    getTransportById,
+    GENERIC_TRANSPORT_LOGFILE,
+} = require('@remlog/transports');
 
 const defaultConfig = {
     port: 8189,
@@ -20,7 +28,8 @@ class Server {
         this.transportId = config.transport || defaultConfig.transport;
         this.instance = express();
 
-        const SelectedTransport = getTransportById(config.transport);
+        logger.info(`Attaching transport ${getTransportNameFromId(this.transportId)} ...`);
+        const SelectedTransport = getTransportById(this.transportId);
         this.transport = new SelectedTransport();
     }
 
@@ -29,13 +38,17 @@ class Server {
     }
 
     trace(req, res, next) {
-        const { payload } = req.query;
+        let { payload } = req.query;
 
         try {
-            logger.info(`Incoming trace from ${req.hostname}/${req.ip}`);
-            this.transport.trace(payload);
+            payload = JSON.parse(decodeURIComponent(payload));
+            payload = new Scheme(payload).get();
+
+            this.transport.trace(payload, () => {
+                this.transport.saveTraceToLock(payload);
+            });
         } catch (e) {
-            logger.error(e.message);
+            logger.error(`Failed parsing payload: ${e.message}`);
         }
 
         next();
@@ -67,6 +80,12 @@ class Server {
         // parse application/json
         this.instance.use(bodyParser.json());
 
+        // view rendering
+        this.instance.set('view engine', 'html');
+        this.instance.set('views', path.join(__dirname, 'views'));
+        this.instance.engine('html', require('hbs').__express);
+
+        // settings default headers
         this.instance.use((req, res, next) => {
             res.setHeader('X-RemLog-Client', req.ip);
             res.setHeader('X-RemLog-Server-Version', `${pkg.version}`);
@@ -76,7 +95,51 @@ class Server {
 
     attachRouter() {
         this.instance.get('/', (req, res, next) => {
+            fs.readFile(GENERIC_TRANSPORT_LOGFILE, (err, data) => {
+                let logs = err ? [] : data;
+
+                res.render('index', {
+                    pkg,
+                    logs,
+                });
+            });
+        });
+
+        this.instance.get('/info', (req, res, next) => {
             res.send(`${pkg.name} v${pkg.version}`);
+        });
+
+        this.instance.get('/logs.json', (req, res, next) => {
+            fs.readFile(GENERIC_TRANSPORT_LOGFILE, (err, data) => {
+                if (err) {
+                    return next(err);
+                }
+
+                res.json(JSON.parse(data.toString()));
+            });
+        });
+
+        this.instance.get('/logs/:id.json', (req, res, next) => {
+            fs.readFile(GENERIC_TRANSPORT_LOGFILE, (err, data) => {
+                if (err) {
+                    return next(err);
+                }
+
+                let selected;
+                const logs = JSON.parse(data.toString());
+
+                logs.forEach((logfile, index) => {
+                    if (logfile.id === req.params.id) {
+                        selected = logfile;
+                    }
+                });
+
+                if (!selected) {
+                    return next(new Error(`Logfile with ID ${req.params.id} was not found`));
+                }
+
+                res.json(selected);
+            });
         });
 
         this.instance.get('/tracer.jpg', (req, res, next) => {
@@ -115,9 +178,7 @@ class Server {
         this.attachRouter();
 
         this.instance.listen(port, () => {
-            logger.success(
-                `Server is listening at port ${port} with transport to ${getTransportNameFromId(this.transportId)} ...`
-            );
+            logger.success(`Server is listening at port ${port} ...`);
         });
     }
 }
