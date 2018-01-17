@@ -1,25 +1,12 @@
 const chalk = require('chalk');
+const Transport = require('../Transport');
 
-class ConsoleLogger {
-    constructor(context) {
-        this.context = context;
-    }
+const TRANSPORT_ID = '@remlog/transports/Console';
 
-    error(message) {
-        console.log(`[${this.context}] ${chalk.red(message)}`);
-    }
-
-    warn(message) {
-        console.log(`[${this.context}] ${chalk.yellow(message)}`);
-    }
-
-    info(message) {
-        console.log(`[${this.context}] ${chalk.cyan(message)}`);
-    }
-
-    success(message) {
-        console.log(`[${this.context}] ${chalk.green(message)}`);
-    }
+class ConsoleTransport extends Transport {
+    trace(payload = {}) {}
 }
 
-exports = module.exports = ConsoleLogger;
+ConsoleTransport.id = TRANSPORT_ID;
+
+exports = module.exports = ConsoleTransport;
