@@ -2,7 +2,7 @@
 
 Remlog is a very simple remote logging tool, with a client which supports all browser and provides an image as well as an AJAX API for modern applications.
 
-###### Contents / Packages
+###### Contents / Packages
 
 * `@remlog/server`
 * `@remlog/scheme`
