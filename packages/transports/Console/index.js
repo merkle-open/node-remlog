@@ -4,8 +4,8 @@ const Transport = require('../Transport');
 const TRANSPORT_ID = '@remlog/transports/Console';
 
 class ConsoleTransport extends Transport {
-    trace(payload = {}) {
-        console.log('tracing payload');
+    trace() {
+        console.log('CONSOLE TRACE');
     }
 }
 

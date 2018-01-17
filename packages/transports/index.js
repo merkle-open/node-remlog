@@ -1,6 +1,7 @@
 const ConsoleTransport = require('./Console');
 const FileSystemTransport = require('./FileSystem');
 const MongoDBTransport = require('./MongoDB');
+const { GENERIC_TRANSPORT_LOGFILE } = require('./Transport');
 const pkg = require('./package.json');
 
 const getTransportById = (transportId = '') => {
@@ -8,7 +9,7 @@ const getTransportById = (transportId = '') => {
         return ConsoleTransport;
     }
 
-    switch (transportId.toLowerCase()) {
+    switch (transportId) {
         case ConsoleTransport.id:
             return ConsoleTransport;
         case FileSystemTransport.id:
@@ -28,4 +29,5 @@ exports = module.exports = {
     MongoDBTransport,
     getTransportNameFromId,
     getTransportById,
+    GENERIC_TRANSPORT_LOGFILE,
 };

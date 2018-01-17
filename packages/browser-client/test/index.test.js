@@ -26,8 +26,8 @@ test('Creats the correct image node in the body with all params', t => {
     client.send('message', payload);
 
     const foundImage = document.body.querySelector('img');
-    t.truthy(foundImage, 'Image node was inserted successfully');
+    t.is(foundImage instanceof window.HTMLImageElement, true, 'Image node was inserted successfully');
 
-    const expectedUrlFragment = `https://remlog-web-srv.my-app.com:8762/trace.jpg?remote=https://remlog-trace.my-app.com:2679&payload=`;
+    const expectedUrlFragment = `https://remlog-web-srv.my-app.com:8762/tracer.jpg?payload=`;
     t.is(foundImage.getAttribute('src').indexOf(expectedUrlFragment), 0);
 });

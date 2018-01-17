@@ -1,6 +1,4 @@
-import { Scheme } from '@remlog/scheme';
 import pkg from './package.json';
-//const pkg = require('./package.json');
 
 const defaultConfig = {
     host: '0.0.0.0',
@@ -13,23 +11,18 @@ class BrowserClient {
     }
 
     getScheme(data = {}) {
-        const scheme = new Scheme({
+        return {
             version: pkg.version,
             host: window.location.host,
             client: 'BrowserClient',
             userAgent: navigator.userAgent,
             shortMessage: data.shortMessage,
             fullMessage: data.fullMessage,
-            timestamp: new Date().toISOString(),
             level: data.level || 0,
             facility: data.facility,
             line: data.line,
             file: data.file,
-        });
-
-        scheme.clean();
-
-        return scheme;
+        };
     }
 
     send(message, data = {}) {
@@ -37,9 +30,10 @@ class BrowserClient {
 
         const { host, port, remote } = this.config;
         const img = document.createElement('img');
-        const payload = this.getScheme(data).serialize();
+        const payload = this.getScheme(data);
+        const query = encodeURIComponent(JSON.stringify(payload));
 
-        img.src = `${host}:${port}/tracer.jpg?remote=${remote.host}:${remote.port}&payload=${payload}`;
+        img.src = `${host}:${port}/tracer.jpg?payload=${query}`;
         img.width = 0;
         img.height = 0;
 
