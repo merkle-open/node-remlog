@@ -1,3 +1,5 @@
+require('./registerHelper');
+
 const fs = require('fs');
 const path = require('path');
 const express = require('express');
@@ -5,7 +7,6 @@ const compression = require('compression');
 const bodyParser = require('body-parser');
 const helmet = require('helmet');
 const pkg = require('./package.json');
-
 const { Logger } = require('@remlog/debug');
 const { Scheme } = require('@remlog/scheme');
 const {
@@ -94,9 +95,11 @@ class Server {
     }
 
     attachRouter() {
+        this.instance.use('/.resources', express.static(path.join(__dirname, 'views/resources')));
+
         this.instance.get('/', (req, res, next) => {
             fs.readFile(GENERIC_TRANSPORT_LOGFILE, (err, data) => {
-                let logs = err ? [] : data;
+                let logs = err ? [] : JSON.parse(data);
 
                 res.render('index', {
                     pkg,

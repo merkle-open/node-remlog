@@ -13,6 +13,7 @@ class Scheme {
     constructor(data) {
         this.data = Object.assign({}, data, {
             id: shortid.generate(),
+            received: new Date().toISOString(),
         });
     }
 

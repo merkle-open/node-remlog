@@ -30,7 +30,7 @@ test('it should create a corrent string by the toString() method', t => {
 
     t.is(
         scheme.toString(),
-        'Scheme { [version, host, shortMessage, fullMessage, userAgent, client, timestamp, level, facility, line, file, id] }'
+        'Scheme { [version, host, shortMessage, fullMessage, userAgent, client, timestamp, level, facility, line, file, id, received] }'
     );
 });
 
