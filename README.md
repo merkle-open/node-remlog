@@ -12,7 +12,7 @@ Remlog is a very simple remote logging tool, with a client which supports all br
 
 ### Transports
 
-####### Contents
+###### Contents 
 
 ```js
 const { FileSystem, Console, MongoDB } = require('@remlog/transports');
@@ -37,7 +37,7 @@ remlog server -t @remlog/transports/Console
 
 ### Server
 
-####### Contents
+###### Contents
 
 ```js
 const { Server } = require('@remlog/server');
@@ -55,7 +55,7 @@ There are a few endpoints you should know first:
 
 ### Browser Client
 
-####### Contents
+###### Contents
 
 ```js
 var BrowserClient = window.remlog.BrowserClient;
@@ -80,7 +80,7 @@ logger.send('something went wrong!', {
 
 ### CLI
 
-####### Contents
+###### Contents
 
 ```js
 const { start } = require('@remlog/cli');
