@@ -5,7 +5,6 @@ import { computedFields, requiredFields, optionalFields } from './fields';
 const validFields = [...computedFields, ...requiredFields, ...optionalFields];
 
 const examplePayload = {
-    id: 1092371934719827389123,
     version: '1.0.0',
     host: '196.182.72.1',
     shortMessage: "There was no value found with key 'testKey'",
@@ -31,26 +30,37 @@ test('it should create a corrent string by the toString() method', t => {
 
     t.is(
         scheme.toString(),
-        'Scheme { [id, version, host, shortMessage, fullMessage, userAgent, client, timestamp, level, facility, line, file] }'
+        'Scheme { [version, host, shortMessage, fullMessage, userAgent, client, timestamp, level, facility, line, file, id] }'
     );
 });
 
 test('it should detect invalid fields with the validate() method', t => {
     const scheme = new Scheme(
-        Object.assign(examplePayload, {
-            id: 10, // will be computed, is not allowed to set manually
+        Object.assign({}, examplePayload, {
+            id: 91823912389128398, // will be computed, is not allowed to set manually, won't have an effect
             someFieldWhichIsNotValidNorCustom: 1234, // custom fields must start with a dollar
         })
     );
 
     const validation = scheme.validate();
 
-    t.is(validation.length, 2);
-    t.is(validation[0].key, 'id');
-    t.is(validation[0].error.message, 'The key id is a computed field and cannot be set manually.');
-    t.is(validation[1].key, 'someFieldWhichIsNotValidNorCustom');
+    t.is(validation.length, 1, 'One issue will be found by the custom field');
+    t.not(scheme.get().id, 91823912389128398, 'ID will be set by the Scheme class');
+    t.is(validation[0].key, 'someFieldWhichIsNotValidNorCustom');
     t.is(
-        validation[1].error.message,
+        validation[0].error.message,
         'Custom fields like someFieldWhichIsNotValidNorCustom must start with a dollar and alphanumeric chars'
     );
+});
+
+test('it should allow custom fields prefixed by the dollar sign ($)', t => {
+    const scheme = new Scheme(
+        Object.assign(examplePayload, {
+            $customField: 123456, // custom fields must start with a dollar
+        })
+    );
+
+    const validation = scheme.validate();
+    t.is(validation.length, 0, Object.keys(scheme.get()));
+    t.is(scheme.get().$customField, 123456, 'Expect values are the same');
 });

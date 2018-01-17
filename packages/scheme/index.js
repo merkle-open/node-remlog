@@ -1,3 +1,4 @@
+const shortid = require('shortid');
 const { computedFields, requiredFields, optionalFields } = require('./fields');
 const { isCustomField } = require('./utils');
 
@@ -9,7 +10,9 @@ const { isCustomField } = require('./utils');
  */
 class Scheme {
     constructor(data = {}) {
-        this.data = data;
+        this.data = Object.assign(data, {
+            id: shortid.generate(),
+        });
     }
 
     get() {
@@ -22,6 +25,17 @@ class Scheme {
 
         receivedKeys.forEach(key => {
             if (!!~computedFields.indexOf(key)) {
+                if (key === 'id') {
+                    if (shortid.isValid(this.data.id)) {
+                        return;
+                    } else {
+                        return errors.push({
+                            key,
+                            error: new Error(`The ID ${this.data.id} is not a valid short-id.`),
+                        });
+                    }
+                }
+
                 errors.push({
                     key,
                     error: new Error(`The key ${key} is a computed field and cannot be set manually.`),
