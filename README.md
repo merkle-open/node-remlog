@@ -2,6 +2,14 @@
 
 Remlog is a very simple remote logging tool, with a client which supports all browser and provides an image as well as an AJAX API for modern applications.
 
+###### Contents / Packages
+
+* `@remlog/server`
+* `@remlog/scheme`
+* `@remlog/debug`
+* `@remlog/cli`
+* `@remlog/browser-client`
+
 ### Transports
 
 Transports are the way where your logs will be stored, for example temporary in the console, in a logfile or on a database etc. There are currently 2 transports supported:
