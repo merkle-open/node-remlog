@@ -12,6 +12,12 @@ Remlog is a very simple remote logging tool, with a client which supports all br
 
 ### Transports
 
+####### Contents
+
+```js
+const { FileSystem, Console, MongoDB } = require('@remlog/transports');
+```
+
 Transports are the way where your logs will be stored, for example temporary in the console, in a logfile or on a database etc. There are currently 2 transports supported:
 
 * Console (`@remlog/transports/Console`)
@@ -31,6 +37,12 @@ remlog server -t @remlog/transports/Console
 
 ### Server
 
+####### Contents
+
+```js
+const { Server } = require('@remlog/server');
+```
+
 The server package is the main core for the remote logging process and provides you the API needed to trace logs immediately.
 There are a few endpoints you should know first:
 
@@ -42,6 +54,12 @@ There are a few endpoints you should know first:
 * `/logs/<log-id>.json` will show you a single log entry in JSON format
 
 ### Browser Client
+
+####### Contents
+
+```js
+var BrowserClient = window.remlog.BrowserClient;
+```
 
 The browser clients helps you creating remote logs inside any browser (supports IE7+, Chrome, Firefox and Safari) by creating an image tag
 and appending it to the body of your website.
@@ -61,6 +79,12 @@ logger.send('something went wrong!', {
 ```
 
 ### CLI
+
+####### Contents
+
+```js
+const { start } = require('@remlog/cli');
+```
 
 ##### server
 
