@@ -9,6 +9,7 @@
         "develop": "webpack --config webpack.config.js --watch",
         "build": "webpack -p --config webpack.config.js"
     },
+    "keywords": ["remote", "logging", "remlog", "node", "debug", "transport", "@remlog", "remotely", "server"],
     "author": "Jan Biasi <biasijan@gmail.com>",
     "license": "MIT",
     "dependencies": {

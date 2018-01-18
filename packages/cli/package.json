@@ -3,11 +3,9 @@
     "version": "1.0.0",
     "description": "",
     "main": "index.js",
+    "keywords": ["remote", "logging", "remlog", "node", "debug", "transport", "@remlog", "remotely", "server"],
     "bin": {
         "remlog": "bin/remlog-cli.js"
-    },
-    "scripts": {
-        "test": "exit "
     },
     "author": "Jan Biasi <biasijan@gmail.com>",
     "license": "MIT",

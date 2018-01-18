@@ -1,14 +1,12 @@
 {
-  "name": "@remlog/debug",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Jan Biasi <biasijan@gmail.com>",
-  "license": "MIT",
-  "dependencies": {
-    "chalk": "^2.3.0"
-  }
+    "name": "@remlog/debug",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "keywords": ["remote", "logging", "remlog", "node", "debug", "transport", "@remlog", "remotely", "server"],
+    "author": "Jan Biasi <biasijan@gmail.com>",
+    "license": "MIT",
+    "dependencies": {
+        "chalk": "^2.3.0"
+    }
 }
