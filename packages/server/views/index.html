@@ -19,7 +19,7 @@
 				</thead>
 				<tbody>
 					{{#each logs as |log nr|}}
-						<tr class="loglevel-{{to_lower log.level}}" data-date="{{log.timestamp}}">
+						<tr class="loglevel-{{log.level}}" data-date="{{log.timestamp}}">
 							<td>{{index_to_number nr}}</td>
 							<td class="loglevel">{{loglevel_name log.level}}</td>
 							<td>{{local_date log.received log.timestamp}}</td>

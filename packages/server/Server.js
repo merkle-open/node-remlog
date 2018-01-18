@@ -41,6 +41,7 @@ class Server {
     trace(payload, req, res, next) {
         try {
             payload.host = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+            payload.timestamp = payload.timestamp || new Date().toISOString();
             payload = new Scheme(payload).get();
 
             this.transport.trace(payload, () => {

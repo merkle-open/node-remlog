@@ -10,7 +10,7 @@ const { start, request } = require('@remlog/cli');
 
 ### server
 
-For the ease of usage it's also possible to run the server from the CLI within a few seconds. It accepts a port option (`-p` or `--port`) and a transport option (`-t` or `--transport`). To check all available transports please refer to the [transports section](#transports).
+For the ease of usage it's also possible to run the server from the CLI within a few seconds. It accepts a port option (`-p` or `--port`) and a transport option (`-t` or `--transport`). To check all available transports or get more information how they work please refer to the [transports package](https://github.com/janbiasi/remlog/tree/develop/packages/transports).
 
 ```bash
 yarn global add @remlog/cli # install the CLI

@@ -52,6 +52,33 @@ table tbody tr:nth-child(2n) {
     background-color: #eee;
 }
 
+table tr .loglevel {
+    color: #888;
+}
+
+table tr.loglevel-5 .loglevel {
+    color: red;
+}
+
+table tr.loglevel-3 .loglevel {
+    color: blue;
+}
+
+table tr.loglevel-2 .loglevel {
+    color: #333;
+    font-style: italic;
+}
+
+table tr.loglevel-4 .loglevel {
+    color: orange;
+}
+
+table tr.loglevel-6 .loglevel {
+    color: darkred;
+    font-weight: 700;
+    text-decoration: underline;
+}
+
 .button {
     background-color: darkcyan;
     border-radius: 3px;

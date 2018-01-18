@@ -15,3 +15,14 @@ There are a few endpoints you should know first:
 * `/tracer.jpg` is a HTTP GET API and is implement by the `@remlog/browser-client` package to provide a cross-browser method to log messages
 * `/logs.json` will return an array of JSON objects representing all your logs
 * `/logs/<log-id>.json` will show you a single log entry in JSON format
+
+### Example
+
+```js
+new require('@remlog/server')
+    .Server({
+        port: 8123,
+        transport: `@remlog/transports/Console`, // default
+    })
+    .start();
+```

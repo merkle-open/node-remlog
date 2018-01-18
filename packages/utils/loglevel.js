@@ -13,6 +13,7 @@ const loglevelNameMap = {
     [LOGLEVEL.ALL]: 'All',
     [LOGLEVEL.TRACE]: 'Trace',
     [LOGLEVEL.DEBUG]: 'Debug',
+    [LOGLEVEL.INFO]: 'Information',
     [LOGLEVEL.WARN]: 'Warning',
     [LOGLEVEL.ERROR]: 'Error',
     [LOGLEVEL.FATAL]: 'Fatal',

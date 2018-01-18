@@ -1,11 +1,20 @@
 const chalk = require('chalk');
 const Transport = require('../Transport');
+const { getLogLevelName } = require('@remlog/utils');
 
 const TRANSPORT_ID = '@remlog/transports/Console';
 
 class ConsoleTransport extends Transport {
-    trace() {
-        console.log('CONSOLE TRACE');
+    trace(payload, finish) {
+        console.log(
+            [
+                `[${payload.timestamp}]`,
+                `${getLogLevelName(payload.level).toUpperCase()} -`,
+                `${payload.shortMessage} (${payload.id})`,
+            ].join(' ')
+        );
+
+        finish();
     }
 }
 
