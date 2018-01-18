@@ -75,4 +75,11 @@ class Scheme {
 
 exports = module.exports = {
     Scheme,
+    isSchemeIdValid: shortid.validate,
+    isCustomField,
+    fields: {
+        computedFields,
+        requiredFields,
+        optionalFields,
+    },
 };
