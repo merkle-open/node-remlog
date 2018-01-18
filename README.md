@@ -10,7 +10,7 @@ Remlog is a very simple remote logging tool, with a client which supports all br
 * [`@remlog/server`](/tree/develop/packages/server)
 * [`@remlog/scheme`](/tree/develop/packages/scheme) _(internal)_
 * [`@remlog/transports`](/tree/develop/packages/transports)
-* [`@remlog/browser-client`](/tree/develop/packages/browser-client)
+* [`@remlog/browser-client`](/packages/browser-client)
 
 ## Quick Start
 
