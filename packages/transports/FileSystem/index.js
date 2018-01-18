@@ -1,7 +1,7 @@
 const fs = require('fs');
 const Transport = require('../Transport');
 const path = require('path');
-const { getLogLevelName } = require('@remlog/scheme');
+const { getLogLevelName } = require('@remlog/utils');
 const { createIntelligentStream } = require('./stream');
 
 const CWD = path.resolve(process.cwd());

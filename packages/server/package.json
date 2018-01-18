@@ -1,21 +1,22 @@
 {
-  "name": "@remlog/server",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "exit 0"
-  },
-  "dependencies": {
-    "@remlog/debug": "1.0.0",
-    "@remlog/scheme": "1.0.0",
-    "@remlog/transports": "1.0.0",
-    "body-parser": "1.18.2",
-    "compression": "1.7.1",
-    "express": "4.16.2",
-    "hbs": "^4.0.1",
-    "helmet": "3.9.0"
-  },
-  "author": "Jan Biasi <biasijan@gmail.com>",
-  "license": "MIT"
+    "name": "@remlog/server",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "exit 0"
+    },
+    "dependencies": {
+        "@remlog/debug": "1.0.0",
+        "@remlog/scheme": "1.0.0",
+        "@remlog/utils": "1.0.0",
+        "@remlog/transports": "1.0.0",
+        "body-parser": "1.18.2",
+        "compression": "1.7.1",
+        "express": "4.16.2",
+        "hbs": "^4.0.1",
+        "helmet": "3.9.0"
+    },
+    "author": "Jan Biasi <biasijan@gmail.com>",
+    "license": "MIT"
 }

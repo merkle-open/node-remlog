@@ -1,5 +1,5 @@
 const hbs = require('hbs');
-const { getLogLevelName } = require('@remlog/scheme');
+const { getLogLevelName } = require('@remlog/utils');
 
 hbs.registerHelper('index_to_number', value => `${value + 1}`);
 hbs.registerHelper('loglevel_name', level => getLogLevelName(level));

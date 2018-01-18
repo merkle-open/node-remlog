@@ -1,7 +1,6 @@
 const shortid = require('shortid');
 const { computedFields, requiredFields, optionalFields } = require('./fields');
 const { isCustomField } = require('./utils');
-const { LOGLEVEL, getLogLevelName } = require('./loglevel');
 
 /**
  * Defining the main transaction data-bags between
@@ -76,6 +75,4 @@ class Scheme {
 
 exports = module.exports = {
     Scheme,
-    LOGLEVEL,
-    getLogLevelName,
 };

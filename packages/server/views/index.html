@@ -29,7 +29,7 @@
 									<code class="code-snippet">{{log.file}}{{#if log.line}}:{{log.line}}{{/if}}</code>
 								{{/if}}
 							</td>
-							<td>{{log.host}}</td>
+							<td>{{log.client}}/{{log.host}}</td>
 							<td>
 								{{#if log.id}}
 									<a class="button" href="/logs/{{log.id}}.json" title="Inspect log #{{log.id}}" target="_blank">

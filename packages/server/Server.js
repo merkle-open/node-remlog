@@ -43,6 +43,7 @@ class Server {
 
         try {
             payload = JSON.parse(decodeURIComponent(payload));
+            payload.host = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
             payload = new Scheme(payload).get();
 
             this.transport.trace(payload, () => {

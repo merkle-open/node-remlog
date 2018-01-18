@@ -1,4 +1,5 @@
 import pkg from './package.json';
+import { getTracerImageUrl } from '@remlog/utils';
 
 const defaultConfig = {
     host: '0.0.0.0',
@@ -26,14 +27,16 @@ class BrowserClient {
     }
 
     send(message, data = {}) {
-        data.shortMessage = message;
+        if (typeof message === 'string') {
+            data.shortMessage = message;
+        } else {
+            data = message || {};
+        }
 
-        const { host, port, remote } = this.config;
         const img = document.createElement('img');
         const payload = this.getScheme(data);
-        const query = encodeURIComponent(JSON.stringify(payload));
 
-        img.src = `${host}:${port}/tracer.jpg?payload=${query}`;
+        img.src = getTracerImageUrl(this.config, payload);
         img.width = 0;
         img.height = 0;
 
