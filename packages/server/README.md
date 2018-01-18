@@ -26,3 +26,21 @@ new require('@remlog/server')
     })
     .start();
 ```
+
+### Sending a trace to the Server via AJAX
+
+```js
+import axios from 'axios';
+import { LOGLEVEL, getTraceUrl } from '@remlog/utils';
+
+const serverConfig = {
+    host: '127.0.0.1',
+    port: '<your-server-port>',
+};
+
+axios.post(getTraceUrl(serverConfig), {
+    shortMessage: 'Hey you!',
+    fullMessage: 'Blablabla',
+    level: LOGLEVEL.INFO,
+});
+```

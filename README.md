@@ -12,6 +12,16 @@ Remlog is a very simple remote logging tool, with a client which supports all br
 * [`@remlog/transports`](https://github.com/janbiasi/remlog/tree/develop/packages/transports)
 * [`@remlog/browser-client`](https://github.com/janbiasi/remlog/packages/tree/develop/browser-client)
 
+## Quick Start
+
+1. Make sure you have Node.js installed (preferred version: 8, support: >= 6)
+2. Install the CLI inside your project via `yarn add -D @remlog/cli`
+3. Add a `poststart` script which runs `remlog server -p <preferred-port>`
+4. Install the `@remlog/browser-client` if you're in a UI project or `@remlog/utils` if you're in a project with AJAX utils
+5. Refer to the [BrowserClient](https://github.com/janbiasi/remlog/packages/tree/develop/browser-client) or [Server](https://github.com/janbiasi/remlog/tree/develop/packages/server#sending-a-trace-to-the-server-via-ajax) package.
+
+Have fun logging!
+
 ### Transports
 
 Transports are the way where your logs will be stored, for example temporary in the console, in a logfile or on a database etc.

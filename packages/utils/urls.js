@@ -16,10 +16,10 @@ const getTracerImageUrl = (config = {}, payload) => {
     return `${host}:${port}${URLS.TRACER_IMAGE}?payload=${encodePayloadForUrl(payload)}`;
 };
 
-const getTraceUrl = (config = {}, payload) => {
+const getTraceUrl = (config = {}) => {
     const { host, port } = config;
 
-    return `${host}:${port}${URLS.TRACE}?payload=${encodePayloadForUrl(payload)}`;
+    return `${host}:${port}${URLS.TRACE}`;
 };
 
 exports = module.exports = {
