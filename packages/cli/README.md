@@ -8,6 +8,16 @@ There is a CLI package which helps you setting up your local log-server within a
 const { start, request } = require('@remlog/cli');
 ```
 
+## CLI
+
+###### Getting help
+
+If you need more information about a command you can simply call the following:
+
+```bash
+remlog <command> --help
+```
+
 ### server
 
 For the ease of usage it's also possible to run the server from the CLI within a few seconds. It accepts a port option (`-p` or `--port`) and a transport option (`-t` or `--transport`). To check all available transports or get more information how they work please refer to the [transports package](https://github.com/janbiasi/remlog/tree/develop/packages/transports).
@@ -24,6 +34,10 @@ Trace implements a simple HTTP request tracing log data on the server (for testi
 ```bash
 remlog trace {"shortMessage": "Hellow there!", "level": 5 } --host 127.0.0.1 --port 9012 --secure
 ```
+
+### ping
+
+Sends a ping message to the server and insert a trace log - just for testing connection purposes.
 
 ### help
 

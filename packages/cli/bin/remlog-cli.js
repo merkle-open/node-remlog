@@ -23,9 +23,29 @@ program
         return request(command.host, command.port, command.secure, message);
     });
 
+program
+    .command('ping')
+    .option('-s, --secure', 'Whether to make a HTTPS or HTTP response')
+    .option('-h, --host <host>', 'Target host')
+    .option('-p, --port <port>', 'Target host port')
+    .action(command => {
+        return request(
+            command.host,
+            command.port,
+            command.secure,
+            JSON.stringify({
+                shortMessage: 'Ping from command line interface',
+                level: 1,
+                line: 32,
+                client: 'CLI',
+            })
+        );
+    });
+
 if (!process.argv.slice(2).length) {
     program.outputHelp();
 }
+
 ['SIGINT', 'SIGTERM'].forEach(sig => {
     process.on(sig, () => {
         process.exit();
