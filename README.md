@@ -26,8 +26,8 @@ Have fun logging!
 
 Transports are the way where your logs will be stored, for example temporary in the console, in a logfile or on a database etc.
 
-* `Console` (@remlog/transports/Console)
-* `FileSystem` (@remlog/transports/FileSystem)
+* Console (package `@remlog/transports/Console`)
+* FileSystem (package `@remlog/transports/FileSystem`)
 
 [> more ...](https://github.com/janbiasi/remlog/tree/develop/packages/transports)
 
