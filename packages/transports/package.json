@@ -1,19 +1,23 @@
 {
     "name": "@remlog/transports",
-    "version": "1.0.0",
+    "version": "0.1.0",
     "description": "",
     "main": "index.js",
     "keywords": ["remote", "logging", "remlog", "node", "debug", "transport", "@remlog", "remotely", "server"],
     "author": "Jan Biasi <biasijan@gmail.com>",
     "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/janbiasi/remlog.git"
+    },
     "dependencies": {
-        "@remlog/scheme": "1.0.0",
-        "@remlog/debug": "1.0.0",
-        "@remlog/utils": "1.0.0",
-        "chalk": "^2.3.0"
+        "@remlog/scheme": "0.1.0",
+        "@remlog/debug": "0.1.0",
+        "@remlog/utils": "0.1.0",
+        "chalk": "2.3.0"
     },
     "devDependencies": {
-        "ava": "^0.24.0",
-        "tap-diff": "^0.1.1"
+        "ava": "0.24.0",
+        "tap-diff": "0.1.1"
     }
 }

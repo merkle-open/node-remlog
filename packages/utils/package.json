@@ -1,16 +1,20 @@
 {
     "name": "@remlog/utils",
-    "version": "1.0.0",
+    "version": "0.1.0",
     "description": "",
     "main": "index.js",
     "keywords": ["remote", "logging", "remlog", "node", "debug", "transport", "@remlog", "remotely", "server"],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/janbiasi/remlog.git"
+    },
     "author": "Jan Biasi <biasijan@gmail.com>",
     "license": "MIT",
     "scripts": {
         "test": "ava --tap | tap-diff"
     },
     "devDependencies": {
-        "ava": "^0.24.0",
-        "tap-diff": "^0.1.1"
+        "ava": "0.24.0",
+        "tap-diff": "0.1.1"
     }
 }

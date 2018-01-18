@@ -1,20 +1,24 @@
 {
     "name": "@remlog/server",
-    "version": "1.0.0",
+    "version": "0.1.0",
     "description": "",
     "main": "index.js",
     "keywords": ["remote", "logging", "remlog", "node", "debug", "transport", "@remlog", "remotely", "server"],
     "dependencies": {
-        "@remlog/debug": "1.0.0",
-        "@remlog/scheme": "1.0.0",
-        "@remlog/utils": "1.0.0",
-        "@remlog/transports": "1.0.0",
+        "@remlog/debug": "0.1.0",
+        "@remlog/scheme": "0.1.0",
+        "@remlog/utils": "0.1.0",
+        "@remlog/transports": "0.1.0",
         "body-parser": "1.18.2",
         "compression": "1.7.1",
         "express": "4.16.2",
-        "hbs": "^4.0.1",
+        "hbs": "4.0.1",
         "helmet": "3.9.0"
     },
     "author": "Jan Biasi <biasijan@gmail.com>",
-    "license": "MIT"
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/janbiasi/remlog.git"
+    }
 }

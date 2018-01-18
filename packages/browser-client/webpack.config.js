@@ -8,6 +8,8 @@ module.exports = {
     output: {
         path: path.join(__dirname, './dist'),
         filename: 'index.js',
+        libraryTarget: 'var',
+        library: 'remlog',
     },
     module: {
         rules: [

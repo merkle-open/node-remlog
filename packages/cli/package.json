@@ -1,6 +1,6 @@
 {
     "name": "@remlog/cli",
-    "version": "1.0.0",
+    "version": "0.1.0",
     "description": "",
     "main": "index.js",
     "keywords": ["remote", "logging", "remlog", "node", "debug", "transport", "@remlog", "remotely", "server"],
@@ -9,9 +9,13 @@
     },
     "author": "Jan Biasi <biasijan@gmail.com>",
     "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/janbiasi/remlog.git"
+    },
     "dependencies": {
-        "commander": "2.13.0",
-        "@remlog/utils": "1.0.0",
-        "@remlog/server": "1.0.0"
+        "@remlog/utils": "0.1.0",
+        "@remlog/server": "0.1.0",
+        "commander": "2.13.0"
     }
 }

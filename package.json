@@ -2,11 +2,14 @@
     "devDependencies": {
         "lerna": "^2.0.0"
     },
-    "name": "@remlog/monorepo",
+    "name": "remlog",
     "version": "1.0.0",
     "main": "index.js",
     "repository": "https://github.com/janbiasi/remlog.git",
     "author": "Jan Biasi <biasijan@gmail.com>",
     "license": "MIT",
-    "private": false
+    "private": false,
+    "scripts": {
+        "clean:package:lock": "rm -rf ./**/*package-lock.json"
+    }
 }
