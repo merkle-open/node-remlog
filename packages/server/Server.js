@@ -38,22 +38,24 @@ class Server {
         defaultConfig;
     }
 
-    trace(req, res, next) {
-        let { payload } = req.query;
-
+    trace(payload, req, res, next) {
         try {
-            payload = JSON.parse(decodeURIComponent(payload));
             payload.host = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
             payload = new Scheme(payload).get();
 
             this.transport.trace(payload, () => {
                 this.transport.saveTraceToLock(payload);
             });
+
+            next(payload);
         } catch (e) {
             logger.error(`Failed parsing payload: ${e.message}`);
-        }
 
-        next();
+            next({
+                id: null,
+                error: e,
+            });
+        }
     }
 
     attachMiddleware() {
@@ -147,17 +149,22 @@ class Server {
         });
 
         this.instance.get('/tracer.jpg', (req, res, next) => {
-            this.trace(req, res, () => {
+            const payload = JSON.parse(decodeURIComponent(req.query));
+
+            this.trace(payload, req, res, () => {
                 res.setHeader('Content-Type', 'image/jpeg');
                 res.status(200).sendFile(path.join(__dirname, 'src', 'tracer.jpg'));
             });
         });
 
         this.instance.post('/trace', (req, res, next) => {
-            this.trace(req, res, () => {
+            const payload = req.body;
+
+            this.trace(payload, req, res, (payload = {}) => {
                 res.status(200).json({
                     timestamp: new Date().toISOString(),
                     error: null,
+                    id: payload.id,
                 });
             });
         });

@@ -2,7 +2,7 @@
 
 const program = require('commander');
 const pkg = require('../package.json');
-const { start } = require('../index');
+const { start, request } = require('../index');
 
 program.version(`${pkg.version}`);
 
@@ -16,9 +16,11 @@ program
 
 program
     .command('trace <message>')
-    .option('-p, --payload [data]', 'The payload to trace')
+    .option('-s, --secure', 'Whether to make a HTTPS or HTTP response')
+    .option('-h, --host <host>', 'Target host')
+    .option('-p, --port <port>', 'Target host port')
     .action((message, command) => {
-        console.log('TRACE %s', message, command.data);
+        return request(command.host, command.port, command.secure, message);
     });
 
 if (!process.argv.slice(2).length) {

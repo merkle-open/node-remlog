@@ -4,13 +4,10 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const pkg = require('./package.json');
 
 module.exports = {
-    entry: {
-        index: './index.js',
-        'index.min': './index.js',
-    },
+    entry: './index.js',
     output: {
         path: path.join(__dirname, './dist'),
-        filename: '[name].js',
+        filename: 'index.js',
     },
     module: {
         rules: [

@@ -13,6 +13,7 @@
     "license": "MIT",
     "dependencies": {
         "commander": "2.13.0",
+        "@remlog/utils": "1.0.0",
         "@remlog/server": "1.0.0"
     }
 }

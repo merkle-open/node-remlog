@@ -1,4 +1,4 @@
-import pkg from './package.json';
+import { version } from './package.json';
 import { getTracerImageUrl } from '@remlog/utils';
 
 const defaultConfig = {
@@ -13,7 +13,7 @@ class BrowserClient {
 
     getScheme(data = {}) {
         return {
-            version: pkg.version,
+            version,
             host: window.location.host,
             client: 'BrowserClient',
             userAgent: navigator.userAgent,
