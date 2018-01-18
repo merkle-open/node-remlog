@@ -29,6 +29,8 @@ new require('@remlog/server')
 
 ### Sending a trace to the Server via AJAX
 
+> This uses the HTTP POST JSON API from the server exposed under the `/trace` route.
+
 ```js
 import axios from 'axios';
 import { LOGLEVEL, getTraceUrl } from '@remlog/utils';
