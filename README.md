@@ -4,11 +4,12 @@ Remlog is a very simple remote logging tool, with a client which supports all br
 
 ###### Contents / Packages
 
-* `@remlog/server`
-* `@remlog/scheme`
-* `@remlog/debug`
-* `@remlog/cli`
-* `@remlog/browser-client`
+* [`@remlog/server`](https://github.com/janbiasi/remlog/packages/server)
+* [`@remlog/scheme`](https://github.com/janbiasi/remlog/packages/scheme)
+* [`@remlog/debug`](https://github.com/janbiasi/remlog/packages/debug)
+* [`@remlog/utils`](https://github.com/janbiasi/remlog/packages/utils)
+* [`@remlog/cli`](https://github.com/janbiasi/remlog/packages/cli)
+* [`@remlog/browser-client`](https://github.com/janbiasi/remlog/packages/browser-client)
 
 ### Transports
 
@@ -83,7 +84,7 @@ logger.send('something went wrong!', {
 ###### Contents
 
 ```js
-const { start } = require('@remlog/cli');
+const { start, request } = require('@remlog/cli');
 ```
 
 ##### server
@@ -94,3 +95,11 @@ For the ease of usage it's also possible to run the server from the CLI within a
 yarn global add @remlog/cli # install the CLI
 remlog server -p 9312 -t @remlog/transports/FileSystem # run server
 ```
+
+##### trace
+
+Trace implements a simple HTTP request tracing log data on the server (for testing etc.)
+
+```bash
+remlog trace {"shortMessage": "Hellow there!"} --host 127.0.0.1 --port 9012 --secure
+
