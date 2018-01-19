@@ -2,16 +2,6 @@
 
 Remlog is a very simple remote logging tool, with a client which supports all browser and provides an image as well as an AJAX API for modern applications.
 
-###### Contents / Packages
-
-* [`@remlog/cli`](/packages/cli)
-* [`@remlog/debug`](/packages/debug) _(internal)_
-* [`@remlog/utils`](/packages/utils)
-* [`@remlog/server`](/packages/server)
-* [`@remlog/scheme`](/packages/scheme) _(internal)_
-* [`@remlog/transports`](/packages/transports)
-* [`@remlog/browser-client`](/packages/browser-client)
-
 ## Quick Start
 
 1. Make sure you have Node.js installed (preferred version: 8, support: >= 6)
@@ -21,6 +11,16 @@ Remlog is a very simple remote logging tool, with a client which supports all br
 5. Refer to the [BrowserClient](/packages/browser-client) or [Server](/packages/server#sending-a-trace-to-the-server-via-ajax) package.
 
 Have fun logging!
+
+###### Contents / Packages
+
+* [`@remlog/cli`](/packages/cli)
+* [`@remlog/debug`](/packages/debug) _(internal)_
+* [`@remlog/utils`](/packages/utils)
+* [`@remlog/server`](/packages/server)
+* [`@remlog/scheme`](/packages/scheme) _(internal)_
+* [`@remlog/transports`](/packages/transports)
+* [`@remlog/browser-client`](/packages/browser-client)
 
 ### Transports
 
