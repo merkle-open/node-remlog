@@ -1,7 +1,7 @@
 const ConsoleTransport = require('./Console');
 const FileSystemTransport = require('./FileSystem');
 const MongoDBTransport = require('./MongoDB');
-const { GENERIC_TRANSPORT_LOGFILE } = require('./Transport');
+const Transport = require('./Transport');
 const pkg = require('./package.json');
 
 const getTransportById = (transportId = '') => {
@@ -29,5 +29,6 @@ exports = module.exports = {
     MongoDBTransport,
     getTransportNameFromId,
     getTransportById,
-    GENERIC_TRANSPORT_LOGFILE,
+    Transport,
+    GENERIC_TRANSPORT_LOGFILE: Transport.GENERIC_TRANSPORT_LOGFILE,
 };
