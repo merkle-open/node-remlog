@@ -11,9 +11,9 @@
         "url": "https://github.com/janbiasi/remlog.git"
     },
     "dependencies": {
-        "@remlog/scheme": "0.1.0",
-        "@remlog/debug": "0.1.0",
         "@remlog/utils": "0.1.0",
+        "@remlog/debug": "0.1.0",
+        "@remlog/scheme": "0.1.0",
         "chalk": "2.3.0"
     },
     "devDependencies": {

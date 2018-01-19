@@ -14,18 +14,18 @@ class Logger {
     }
 
     error(message) {
-        console.error(`${this.contextPrefix} ${chalk.red(message)}`);
+        console.error(`${this.contextPrefix} ${red(message)}`);
     }
 
     warn(message) {
-        console.warn(`${this.contextPrefix} ${chalk.yellow(message)}`);
+        console.warn(`${this.contextPrefix} ${yellow(message)}`);
     }
     info(message) {
-        console.info(`${this.contextPrefix} ${chalk.cyan(message)}`);
+        console.info(`${this.contextPrefix} ${cyan(message)}`);
     }
 
     success(message) {
-        console.log(`${this.contextPrefix} ${chalk.green(message)}`);
+        console.log(`${this.contextPrefix} ${green(message)}`);
     }
 }
 
