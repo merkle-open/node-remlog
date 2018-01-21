@@ -1,5 +1,5 @@
 import { version } from "./package.json";
-import { getTracerImageUrl } from "@remlog/utils";
+import { getTracerImageUrl } from "@namics/remlog-utils";
 
 const defaultConfig = {
   host: "0.0.0.0",

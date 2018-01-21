@@ -1,6 +1,6 @@
 const path = require("path");
-const { Scheme } = require("@remlog/scheme");
-const { Logger } = require("@remlog/debug");
+const { Scheme } = require("@namics/remlog-scheme");
+const { Logger } = require("@namics/remlog-debug");
 const {
   createStream,
   checkReadWritePermission
@@ -21,7 +21,7 @@ class Transport {
   /**
    * Validates a payload against the scheme definition
    * @param {Object?} payload
-   * @returns {<@remlog/scheme.Scheme>|boolean}
+   * @returns {<@namics/remlog-scheme.Scheme>|boolean}
    */
   validate(payload = initialPayload) {
     const scheme = new Scheme(payload);

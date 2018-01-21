@@ -1,6 +1,6 @@
 const chalk = require("chalk");
 const Transport = require("../Transport");
-const { getLogLevelName } = require("@remlog/utils");
+const { getLogLevelName } = require("@namics/remlog-utils");
 
 const TRANSPORT_ID = "@namics/remlog-transports/Console";
 

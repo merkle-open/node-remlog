@@ -10,7 +10,7 @@
         "node",
         "debug",
         "transport",
-        "@remlog",
+        "@namics/remlog",
         "remotely",
         "server"
     ],

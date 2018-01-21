@@ -1,6 +1,8 @@
 {
     "devDependencies": {
         "commitizen": "^2.9.6",
+        "conventional-changelog": "^1.1.7",
+        "conventional-changelog-cli": "^1.3.5",
         "cz-conventional-changelog": "^2.1.0",
         "lerna": "2.0.0",
         "lerna-terminal": "1.1.1",
@@ -14,9 +16,13 @@
     "license": "MIT",
     "private": false,
     "scripts": {
+        "test": "./node_modules/.bin/lerna-terminal test",
         "clean-package-lock": "rm -rf ./**/*package-lock.json",
         "precommit": "./hooks/prettier.sh",
-        "commit": "./node_modules/.bin/git-cz"
+        "commit": "./node_modules/.bin/git-cz",
+        "generate-changelog":
+            "./node_modules/.bin/conventional-changelog -p remlog -i CHANGELOG.md -s -r",
+        "version": "yarn run generate-changelog && git add CHANGELOG.md"
     },
     "config": {
         "commitizen": {
