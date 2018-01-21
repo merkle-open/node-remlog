@@ -15,7 +15,7 @@
     "private": false,
     "scripts": {
         "clean-package-lock": "rm -rf ./**/*package-lock.json",
-        "precommit": "./hooks/prettier",
+        "precommit": "./hooks/prettier.sh",
         "commit": "./node_modules/.bin/git-cz"
     },
     "config": {
