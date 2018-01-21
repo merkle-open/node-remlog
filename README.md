@@ -1,5 +1,7 @@
 [![Build Status](https://travis-ci.org/janbiasi/remlog.svg?branch=develop)](https://travis-ci.org/janbiasi/remlog) [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
+![alt text][/docs/logo.svg]
+
 ## node-remlog (stands for _Remote Log in Node.js_)
 
 Remlog is a very simple remote logging tool, with a client which supports all browser and provides an image as well as an AJAX API for modern applications.
