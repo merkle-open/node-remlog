@@ -12,4 +12,6 @@ env:
   - NODE_ENV=test
   - CI=true
 install: yarn --frozen-lockfile
+script:
+  - npm test
 cache: false
