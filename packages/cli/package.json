@@ -1,9 +1,19 @@
 {
-    "name": "@remlog/cli",
+    "name": "@namics/remlog-cli",
     "version": "0.1.0",
     "description": "",
     "main": "index.js",
-    "keywords": ["remote", "logging", "remlog", "node", "debug", "transport", "@remlog", "remotely", "server"],
+    "keywords": [
+        "remote",
+        "logging",
+        "remlog",
+        "node",
+        "debug",
+        "transport",
+        "@remlog",
+        "remotely",
+        "server"
+    ],
     "bin": {
         "remlog": "bin/remlog-cli.js"
     },
@@ -14,8 +24,8 @@
         "url": "https://github.com/janbiasi/remlog.git"
     },
     "dependencies": {
-        "@remlog/utils": "0.1.0",
-        "@remlog/server": "0.1.0",
+        "@namics/remlog-utils": "0.1.0",
+        "@namics/remlog-server": "0.1.0",
         "commander": "2.13.0"
     }
 }

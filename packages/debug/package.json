@@ -1,9 +1,19 @@
 {
-    "name": "@remlog/debug",
+    "name": "@namics/remlog-debug",
     "version": "0.1.0",
     "description": "",
     "main": "index.js",
-    "keywords": ["remote", "logging", "remlog", "node", "debug", "transport", "@remlog", "remotely", "server"],
+    "keywords": [
+        "remote",
+        "logging",
+        "remlog",
+        "node",
+        "debug",
+        "transport",
+        "@remlog",
+        "remotely",
+        "server"
+    ],
     "author": "Jan Biasi <biasijan@gmail.com>",
     "license": "MIT",
     "repository": {
