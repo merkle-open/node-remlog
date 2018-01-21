@@ -1,11 +1,17 @@
+dist: trusty
 language: node_js
 node_js:
-  - "8"
-before_script:
+  - 8
+  - 9
+install: true
+before_install:
   - npm install -g lerna
+before_script:
+  - lerna bootstrap
 env:
   - NODE_ENV=test
   - CI=true
+install: yarn --frozen-lockfile
 cache:
   yarn: true
   directories:
