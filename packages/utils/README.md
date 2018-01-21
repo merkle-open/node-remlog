@@ -1,4 +1,4 @@
-# @remlog/utils
+# @namics/remlog-utils
 
 ### Contents
 
@@ -9,8 +9,8 @@ const {
     encodePayloadForUrl,
     getTracerImageUrl,
     getTraceUrl,
-    getLogLevelName,
-} = require('@remlog/utils');
+    getLogLevelName
+} = require("@namics/remlog-utils");
 ```
 
 #### Signatures

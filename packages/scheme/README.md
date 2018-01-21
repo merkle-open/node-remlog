@@ -1,9 +1,9 @@
-# @remlog/scheme
+# @namics/remlog-scheme
 
 ###### Contents
 
 ```js
-const { fields, Scheme, isSchemeIdValid, isCustomField } = require('@remlog/scheme');
+const { fields, Scheme, isSchemeIdValid, isCustomField } = require("@namics/remlog-scheme");
 ```
 
 ### Scheme
@@ -28,23 +28,23 @@ interface IScheme {
 ##### Internal use
 
 ```js
-const { Scheme } = require('@remlog/scheme');
+const { Scheme } = require("@namics/remlog-scheme");
 
 const examplePayload = {
-    shortMessage: 'Some message',
-    fullMessage: 'An extended message for the log',
+    shortMessage: "Some message",
+    fullMessage: "An extended message for the log",
     level: 5,
-    file: 'example.js',
+    file: "example.js",
     line: 172,
-    timestamp: '2018-01-18T15:16:15.244Z',
+    timestamp: "2018-01-18T15:16:15.244Z"
 };
 
 const validCustomPayload = Object.assign({}, examplePayload, {
-    $custom: 'some data ...', // custom fields are prefixed by dollar
+    $custom: "some data ..." // custom fields are prefixed by dollar
 });
 
 const invalidPayload = Object.assign({}, examplePayload, {
-    id: '8an204asdf1', // it is not allowed to set the ID manually
+    id: "8an204asdf1" // it is not allowed to set the ID manually
 });
 
 const validScheme = new Scheme(examplePayload);

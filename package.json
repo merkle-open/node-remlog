@@ -1,26 +1,26 @@
 {
-  "devDependencies": {
-    "commitizen": "^2.9.6",
-    "cz-conventional-changelog": "^2.1.0",
-    "lerna": "2.0.0",
-    "lerna-terminal": "1.1.1",
-    "prettier": "1.10.2"
-  },
-  "name": "remlog",
-  "version": "1.0.0",
-  "main": "index.js",
-  "repository": "https://github.com/janbiasi/remlog.git",
-  "author": "Jan Biasi <biasijan@gmail.com>",
-  "license": "MIT",
-  "private": false,
-  "scripts": {
-    "clean-package-lock": "rm -rf ./**/*package-lock.json",
-    "precommig": "./hooks/prettier",
-    "commit": "./node_modules/.bin/git-cz"
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
+    "devDependencies": {
+        "commitizen": "^2.9.6",
+        "cz-conventional-changelog": "^2.1.0",
+        "lerna": "2.0.0",
+        "lerna-terminal": "1.1.1",
+        "prettier": "1.10.2"
+    },
+    "name": "remlog",
+    "version": "1.0.0",
+    "main": "index.js",
+    "repository": "https://github.com/janbiasi/remlog.git",
+    "author": "Jan Biasi <biasijan@gmail.com>",
+    "license": "MIT",
+    "private": false,
+    "scripts": {
+        "clean-package-lock": "rm -rf ./**/*package-lock.json",
+        "precommit": "./hooks/prettier",
+        "commit": "./node_modules/.bin/git-cz"
+    },
+    "config": {
+        "commitizen": {
+            "path": "./node_modules/cz-conventional-changelog"
+        }
     }
-  }
 }

@@ -8,4 +8,6 @@ echo "$jsfiles" | xargs ./node_modules/.bin/prettier --write
 # Add back the modified/prettified files to staging
 echo "$jsfiles" | xargs git add
 
+echo "Prettier successfully run!"
+
 exit 0
