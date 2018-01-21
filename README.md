@@ -51,6 +51,9 @@ The utilites stack provides all information required to create custom trace requ
 ## Available scripts
 
 ```bash
+# create a commitizen conform commit
+yarn run commit
+
 # run all tests in each package inside the lerna-terminal
 yarn run testsuite
 
