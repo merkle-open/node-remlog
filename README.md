@@ -52,7 +52,7 @@ The utilites stack provides all information required to create custom trace requ
 
 ```bash
 # run all tests in each package inside the lerna-terminal
-yarn run test
+yarn run testsuite
 
 # generates the changelog for each package
 yarn run generate-changelog

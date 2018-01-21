@@ -15,7 +15,8 @@
     "license": "MIT",
     "private": false,
     "scripts": {
-        "test": "./node_modules/.bin/lerna-terminal test",
+        "test": "./node_modules/.bin/lerna run test",
+        "testsuite": "./node_modules/.bin/lerna-terminal test",
         "generate-changelog": "./node_modules/.bin/lerna-terminal generate-changelog",
         "clean-package-lock": "rm -rf ./**/*package-lock.json",
         "prettier": "./hooks/prettier.sh",
