@@ -12,7 +12,4 @@ env:
   - NODE_ENV=test
   - CI=true
 install: yarn --frozen-lockfile
-cache:
-  yarn: true
-  directories:
-    - "node_modules"
+cache: false
