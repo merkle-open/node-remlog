@@ -21,7 +21,8 @@
         "clean-package-lock": "rm -rf ./**/*package-lock.json",
         "prettier": "./hooks/prettier.sh",
         "precommit": "yarn run prettier",
-        "commit": "./node_modules/.bin/git-cz"
+        "commit": "./node_modules/.bin/git-cz",
+        "prepublish": "yarn run prettier && yarn run test && yarn run generate-changelog"
     },
     "config": {
         "commitizen": {
