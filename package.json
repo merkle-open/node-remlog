@@ -21,8 +21,7 @@
         "precommit": "./hooks/prettier.sh",
         "commit": "./node_modules/.bin/git-cz",
         "generate-changelog":
-            "./node_modules/.bin/conventional-changelog -p remlog -i CHANGELOG.md -s -r",
-        "version": "yarn run generate-changelog && git add CHANGELOG.md"
+            "./node_modules/.bin/conventional-changelog -p remlog -i CHANGELOG.md -s && git add CHANGELOG.md"
     },
     "config": {
         "commitizen": {
