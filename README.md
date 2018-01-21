@@ -48,6 +48,19 @@ The utilites stack provides all information required to create custom trace requ
 
 [> more ...](/packages/utils)
 
+## Available scripts
+
+```bash
+# run all tests in each package inside the lerna-terminal
+yarn run test
+
+# generates the changelog for each package
+yarn run generate-changelog
+
+# runs prettier against all packages
+yarn run prettier
+```
+
 ## Contents and packages
 
 * [`@namics/remlog-cli`](/packages/cli)
