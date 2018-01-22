@@ -4,7 +4,6 @@ node_js:
   - 8
 env:
   - NODE_ENV=test
-  - CI=true
 before_install:
   - npm i -g lerna
 install: 
