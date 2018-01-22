@@ -1,6 +1,6 @@
 {
     "name": "@namics/remlog-cli",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "",
     "main": "index.js",
     "keywords": [
@@ -26,12 +26,11 @@
     "scripts": {
         "test": "exit 0",
         "commit": "./node_modules/.bin/git-cz",
-        "generate-changelog":
-            "./node_modules/.bin/conventional-changelog -p angular -i CHANGELOG.md -s  -r 0 --lernaPackage @namics/remlog-cli && git add CHANGELOG.md"
+        "generate-changelog": "./node_modules/.bin/conventional-changelog -p angular -i CHANGELOG.md -s  -r 0 --lernaPackage @namics/remlog-cli && git add CHANGELOG.md"
     },
     "dependencies": {
-        "@namics/remlog-server": "0.1.0",
-        "@namics/remlog-utils": "0.1.0",
+        "@namics/remlog-server": "^0.1.1",
+        "@namics/remlog-utils": "^0.1.1",
         "commander": "2.13.0"
     },
     "devDependencies": {
