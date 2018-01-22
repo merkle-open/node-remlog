@@ -19,8 +19,9 @@
         "testsuite": "./node_modules/.bin/lerna-terminal test",
         "generate-changelog": "./node_modules/.bin/lerna-terminal generate-changelog",
         "clean-package-lock": "rm -rf ./**/*package-lock.json",
+        "clean-remlog-files": "rm -rf ./**/remlog.json ./**/remlog.log",
         "prettier": "./hooks/prettier.sh",
-        "precommit": "yarn run prettier",
+        "precommit": "yarn run prettier && yarn run clean-remlog-files",
         "commit": "./node_modules/.bin/git-cz",
         "prepare-release": "yarn run prettier && yarn run test && yarn run generate-changelog"
     },

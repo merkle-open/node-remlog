@@ -35,6 +35,7 @@ class Server {
         this.instance = express();
 
         logger.info(`Attaching transport ${getTransportNameFromId(this.transportId)} ...`);
+        logger.info(`Setting CORS restriction to ${this.config.cors.join(', ')} ...`);
         const SelectedTransport = getTransportById(this.transportId);
         this.transport = new SelectedTransport();
     }
@@ -78,17 +79,15 @@ class Server {
             this.instance.use(
                 cors({
                     origin: (origin, callback) => {
-                        if (!!~this.config.whitelist.indexOf(origin)) {
+                        if (!!~this.config.cors.indexOf(origin)) {
                             callback(null, true);
                         } else {
-                            callback(new Error('Not allowed by CORS policy'));
+                            callback(new Error(`Origin ${origin} not allowed by CORS policy`));
                         }
                     }
                 })
             );
         }
-
-        this.instance.use(whitelistedCORS(this.config.cors));
 
         // compress all responses except for a single header
         this.instance.use(
@@ -193,7 +192,8 @@ class Server {
                 res.status(200).json({
                     timestamp: new Date().toISOString(),
                     error: null,
-                    id: payload.id
+                    id: payload.id,
+                    httpStatus: 200
                 });
             });
         });
@@ -205,7 +205,8 @@ class Server {
 
             res.status(500).json({
                 timestamp: new Date().toISOString(),
-                error: errorMessage
+                error: errorMessage,
+                httpStatus: 500
             });
         });
     }
