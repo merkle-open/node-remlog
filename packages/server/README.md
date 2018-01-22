@@ -3,7 +3,7 @@
 ###### Contents
 
 ```js
-const { Server } = require("@namics/remlog-server");
+const { Server } = require('@namics/remlog-server');
 ```
 
 The server package is the main core for the remote logging process and provides you the API needed to trace logs immediately.
@@ -19,10 +19,11 @@ There are a few endpoints you should know first:
 ### Example
 
 ```js
-new require("@namics/remlog-server")
+new require('@namics/remlog-server')
     .Server({
         port: 8123,
-        transport: `@namics/remlog-transports/Console` // default
+        transport: `@namics/remlog-transports/Console`, // default
+        cors: ['*'] // default
     })
     .start();
 ```
@@ -32,17 +33,17 @@ new require("@namics/remlog-server")
 > This uses the HTTP POST JSON API from the server exposed under the `/trace` route.
 
 ```js
-import axios from "axios";
-import { LOGLEVEL, getTraceUrl } from "@namics/remlog-utils";
+import axios from 'axios';
+import { LOGLEVEL, getTraceUrl } from '@namics/remlog-utils';
 
 const serverConfig = {
-    host: "127.0.0.1",
-    port: "<your-server-port>"
+    host: '127.0.0.1',
+    port: '<your-server-port>'
 };
 
 axios.post(getTraceUrl(serverConfig), {
-    shortMessage: "Hey you!",
-    fullMessage: "Blablabla",
+    shortMessage: 'Hey you!',
+    fullMessage: 'Blablabla',
     level: LOGLEVEL.INFO
 });
 ```
