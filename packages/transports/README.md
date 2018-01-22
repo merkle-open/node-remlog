@@ -5,7 +5,7 @@ Transports are the way where your logs will be stored, for example temporary in 
 ###### Contents
 
 ```js
-const { FileSystem, Console, MongoDB } = require("@namics/remlog-transports");
+const { FileSystem, Console, MongoDB } = require('@namics/remlog-transports');
 ```
 
 * Console (`@namics/remlog-transports/Console`)
@@ -14,8 +14,8 @@ const { FileSystem, Console, MongoDB } = require("@namics/remlog-transports");
 You can simply add the transports to your server by the constructor or CLI argument:
 
 ```js
-new require("@namics/remlog-server").Server({
-    transport: `@namics/remlog-transports/FileSystem`
+new require('@namics/remlog-server').Server({
+    transport: `@namics/remlog-transports/FileSystem`,
 });
 ```
 
@@ -26,18 +26,24 @@ remlog server -t @namics/remlog-transports/Console
 ### Creating a new transport
 
 ```js
-const { Transport } = require("@namics/remlog-transports");
-const connection = require("mysql").createConnection({
-    host: "localhost",
-    user: "me",
-    password: "secret",
-    database: "my_db"
+const { Transport } = require('@namics/remlog-transports');
+const connection = require('mysql').createConnection({
+    host: 'localhost',
+    user: 'me',
+    password: 'secret',
+    database: 'my_db',
 });
 
 class CustomTransport extends Transport {
+    /**
+     * This method will be responsible for the trace of logs
+     *
+     * @param {Object} payload          The log payload
+     * @param {Function} resolve        Will resolve the trace and save it to the internal file
+     */
     trace(payload, resolve) {
         connection.connect();
-        connection.query("INSERT INTO LOGS ...");
+        connection.query('INSERT INTO LOGS ...');
         connection.end();
 
         resolve();
