@@ -4,7 +4,7 @@ const { red, green } = require('chalk');
 const { Server } = require('@namics/remlog-server');
 const { URLS, getTraceUrl } = require('@namics/remlog-utils');
 
-const start = (port = Server.defaultConfig.port, transport, cors = '') => {
+const start = (port = Server.defaultConfig.port, transport, cors = '*') => {
     if (typeof cors === 'string') {
         cors = cors.split(',').map(host => host.trim());
     }

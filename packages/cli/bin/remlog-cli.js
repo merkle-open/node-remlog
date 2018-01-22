@@ -15,7 +15,7 @@ program
     )
     .option('-c, --cors <whitelist>', 'Set a custom whitelist for CORS requests')
     .action(command => {
-        return start(command.port, command.transport, command.whitelist);
+        return start(command.port, command.transport, command.cors);
     });
 
 program
