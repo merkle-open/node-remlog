@@ -10,7 +10,7 @@
         "build": "webpack -p --config webpack.config.js",
         "commit": "./node_modules/.bin/git-cz",
         "generate-changelog":
-            "./node_modules/.bin/conventional-changelog -p angular -i CHANGELOG.md -s  -r 0 && git add CHANGELOG.md"
+            "./node_modules/.bin/conventional-changelog -p angular -i CHANGELOG.md -s  -r 0 --lernaPackage @namics/remlog-browser-client && git add CHANGELOG.md"
     },
     "repository": {
         "type": "git",

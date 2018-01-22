@@ -23,7 +23,7 @@
         "test:watch": "ava --watch",
         "commit": "./node_modules/.bin/git-cz",
         "generate-changelog":
-            "./node_modules/.bin/conventional-changelog -p angular -i CHANGELOG.md -s  -r 0 && git add CHANGELOG.md"
+            "./node_modules/.bin/conventional-changelog -p angular -i CHANGELOG.md -s  -r 0 --lernaPackage @namics/remlog-scheme && git add CHANGELOG.md"
     },
     "author": "Jan Biasi <biasijan@gmail.com>",
     "license": "MIT",
