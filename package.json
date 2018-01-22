@@ -10,10 +10,10 @@
     "name": "remlog",
     "version": "0.1.0",
     "main": "index.js",
-    "repository": "https://github.com/janbiasi/remlog.git",
+    "repository": "https://github.com/namics/node-remlog.git",
     "author": "Jan Biasi <biasijan@gmail.com>",
     "license": "MIT",
-    "private": false,
+    "private": true,
     "scripts": {
         "test": "./node_modules/.bin/lerna run test",
         "testsuite": "./node_modules/.bin/lerna-terminal test",

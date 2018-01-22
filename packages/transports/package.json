@@ -18,12 +18,16 @@
     "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "https://github.com/janbiasi/remlog.git"
+        "url": "https://github.com/namics/node-remlog.git"
+    },
+    "publishConfig": {
+        "access": "public"
     },
     "scripts": {
         "test": "exit 0",
         "commit": "./node_modules/.bin/git-cz",
-        "generate-changelog": "./node_modules/.bin/conventional-changelog -p angular -i CHANGELOG.md -s  -r 0 --lernaPackage @namics/remlog-transports && git add CHANGELOG.md"
+        "generate-changelog":
+            "./node_modules/.bin/conventional-changelog -p angular -i CHANGELOG.md -s  -r 0 --lernaPackage @namics/remlog-transports && git add CHANGELOG.md"
     },
     "dependencies": {
         "@namics/remlog-debug": "^0.1.1",

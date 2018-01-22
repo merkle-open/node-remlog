@@ -14,6 +14,21 @@
         "remotely",
         "server"
     ],
+    "author": "Jan Biasi <biasijan@gmail.com>",
+    "license": "MIT",
+    "scripts": {
+        "test": "exit 0",
+        "commit": "./node_modules/.bin/git-cz",
+        "generate-changelog":
+            "./node_modules/.bin/conventional-changelog -p angular -i CHANGELOG.md -s  -r 0 --lernaPackage @namics/remlog-server && git add CHANGELOG.md"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/namics/node-remlog.git"
+    },
+    "publishConfig": {
+        "access": "public"
+    },
     "dependencies": {
         "@namics/remlog-debug": "^0.1.1",
         "@namics/remlog-scheme": "^0.1.1",
@@ -24,17 +39,6 @@
         "express": "4.16.2",
         "hbs": "4.0.1",
         "helmet": "3.9.0"
-    },
-    "author": "Jan Biasi <biasijan@gmail.com>",
-    "license": "MIT",
-    "scripts": {
-        "test": "exit 0",
-        "commit": "./node_modules/.bin/git-cz",
-        "generate-changelog": "./node_modules/.bin/conventional-changelog -p angular -i CHANGELOG.md -s  -r 0 --lernaPackage @namics/remlog-server && git add CHANGELOG.md"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/janbiasi/remlog.git"
     },
     "devDependencies": {
         "commitizen": "2.9.6",

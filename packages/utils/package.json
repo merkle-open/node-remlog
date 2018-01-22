@@ -16,14 +16,18 @@
     ],
     "repository": {
         "type": "git",
-        "url": "https://github.com/janbiasi/remlog.git"
+        "url": "https://github.com/namics/node-remlog.git"
     },
     "author": "Jan Biasi <biasijan@gmail.com>",
     "license": "MIT",
     "scripts": {
         "test": "ava --tap | tap-diff",
         "commit": "./node_modules/.bin/git-cz",
-        "generate-changelog": "./node_modules/.bin/conventional-changelog -p angular -i CHANGELOG.md -s  -r 0 --lernaPackage @namics/remlog-utils && git add CHANGELOG.md"
+        "generate-changelog":
+            "./node_modules/.bin/conventional-changelog -p angular -i CHANGELOG.md -s  -r 0 --lernaPackage @namics/remlog-utils && git add CHANGELOG.md"
+    },
+    "publishConfig": {
+        "access": "public"
     },
     "devDependencies": {
         "ava": "0.24.0",

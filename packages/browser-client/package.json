@@ -9,11 +9,12 @@
         "develop": "webpack --config webpack.config.js --watch",
         "build": "webpack -p --config webpack.config.js",
         "commit": "./node_modules/.bin/git-cz",
-        "generate-changelog": "./node_modules/.bin/conventional-changelog -p angular -i CHANGELOG.md -s  -r 0 --lernaPackage @namics/remlog-browser-client && git add CHANGELOG.md"
+        "generate-changelog":
+            "./node_modules/.bin/conventional-changelog -p angular -i CHANGELOG.md -s  -r 0 --lernaPackage @namics/remlog-browser-client && git add CHANGELOG.md"
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/janbiasi/remlog.git"
+        "url": "https://github.com/namics/node-remlog.git"
     },
     "keywords": [
         "remote",
@@ -28,6 +29,9 @@
     ],
     "author": "Jan Biasi <biasijan@gmail.com>",
     "license": "MIT",
+    "publishConfig": {
+        "access": "public"
+    },
     "dependencies": {
         "@namics/remlog-utils": "^0.1.1",
         "babel-runtime": "6.26.0"
@@ -49,14 +53,9 @@
     },
     "ava": {
         "babel": "inherit",
-        "require": [
-            "babel-register",
-            "./test/helpers/setup-browser-env.js"
-        ]
+        "require": ["babel-register", "./test/helpers/setup-browser-env.js"]
     },
     "babel": {
-        "presets": [
-            "@ava/stage-4"
-        ]
+        "presets": ["@ava/stage-4"]
     }
 }
