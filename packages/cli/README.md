@@ -46,3 +46,5 @@ Will display a list of all commands and options
 ```bash
 remlog help
 ```
+
+> Review the [Changelog](/packages/cli/CHANGELOG.md)

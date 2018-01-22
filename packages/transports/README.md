@@ -44,3 +44,5 @@ class CustomTransport extends Transport {
     }
 }
 ```
+
+> Review the [Changelog](/packages/transports/CHANGELOG.md)

@@ -43,3 +43,5 @@ remoteLog.send('Some logging message', /* opt: */ {
 	file: 'someFile.js'
 });
 ```
+
+> Review the [Changelog](/packages/browser-client/CHANGELOG.md)

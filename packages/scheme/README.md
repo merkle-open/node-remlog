@@ -58,3 +58,5 @@ invalidScheme.validate(); // returns [{key: 'id', error: Error('The key id is a 
 
 validScheme.get(); // will return the full scheme including timestamp, id etc.
 ```
+
+> Review the [Changelog](/packages/scheme/CHANGELOG.md)

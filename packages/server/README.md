@@ -46,3 +46,5 @@ axios.post(getTraceUrl(serverConfig), {
     level: LOGLEVEL.INFO
 });
 ```
+
+> Review the [Changelog](/packages/server/CHANGELOG.md)

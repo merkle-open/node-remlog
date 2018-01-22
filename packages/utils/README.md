@@ -51,3 +51,5 @@ The loglevels are inspired by [Apache's log4j](https://logging.apache.org/log4j/
 * ERROR (`5`)
 * FATAL (`6`)
 * OFF (`7`)
+
+> Review the [Changelog](/packages/utils/CHANGELOG.md)

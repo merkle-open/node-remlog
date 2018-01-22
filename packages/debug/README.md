@@ -25,3 +25,5 @@ const logger = new Logger("MyModule");
 // $~ [MyModule] hey you!
 logger.warn("hey you!");
 ```
+
+> Review the [Changelog](/packages/debug/CHANGELOG.md)
