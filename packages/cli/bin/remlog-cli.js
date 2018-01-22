@@ -9,9 +9,13 @@ program.version(`${pkg.version}`);
 program
     .command('server')
     .option('-p, --port <port>', 'The targeted port of the server instance')
-    .option('-t, --transport <transport>', 'Select a custom transport for the server, default: Console')
+    .option(
+        '-t, --transport <transport>',
+        'Select a custom transport for the server, default: Console'
+    )
+    .option('-c, --cors <whitelist>', 'Set a custom whitelist for CORS requests')
     .action(command => {
-        return start(command.port, command.transport);
+        return start(command.port, command.transport, command.whitelist);
     });
 
 program
@@ -37,7 +41,7 @@ program
                 shortMessage: 'Ping from command line interface',
                 level: 1,
                 line: 32,
-                client: 'CLI',
+                client: 'CLI'
             })
         );
     });
