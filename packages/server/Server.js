@@ -70,7 +70,7 @@ class Server {
 
         if (
             !Array.isArray(this.config.cors) ||
-            (this.config.cors.length === 0 && this.config.cors[0] === CORS_ALL_HOSTS_ENABLED[0])
+            (this.config.cors.length === 1 && this.config.cors[0] === CORS_ALL_HOSTS_ENABLED[0])
         ) {
             // If no config given or if it set to '*' all hosts can use CORS
             this.instance.use(cors());
