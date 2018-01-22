@@ -1,0 +1,6 @@
+CHANGELOG.md
+README.md
+test
+webpack.config.js
+*.log
+yarn.lock
