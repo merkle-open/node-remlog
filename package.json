@@ -22,7 +22,7 @@
         "prettier": "./hooks/prettier.sh",
         "precommit": "yarn run prettier",
         "commit": "./node_modules/.bin/git-cz",
-        "prepublish": "yarn run prettier && yarn run test && yarn run generate-changelog"
+        "prepare-release": "yarn run prettier && yarn run test && yarn run generate-changelog"
     },
     "config": {
         "commitizen": {

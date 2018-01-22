@@ -64,6 +64,9 @@ yarn run generate-changelog
 
 # runs prettier against all packages
 yarn run prettier
+
+# prettifies all files, generates changelog
+yarn run prepare-release
 ```
 
 ## Contents and packages
