@@ -9,6 +9,7 @@ before_install:
 install: 
   - npm install
   - lerna bootstrap
+  - npm build
 matrix:
   fast_finish: true
 cache: false
