@@ -36,7 +36,8 @@ For bug reports please provide the *STEPS TO REPRODUCE* and if possible a *MINIM
 ## Please tell us about your environment
 
 <pre><code>
-TerrificBridge version: X.Y.Z
+package: @namics/remlog-
+version: X.Y.Z
 <!-- Check whether this is still an issue in the most recent version -->
 
 Browser:
@@ -48,6 +49,10 @@ Browser:
 - [ ] Safari (iOS) version XX
 - [ ] IE version XX
 - [ ] Edge version XX
+
+Server:
+- [ ] Node.js version xx
+- [ ] IO version XX
  
 For Tooling issues:
 - Node version: XX <!-- use `node --version` -->
