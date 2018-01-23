@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/janbiasi/remlog.svg?branch=develop)](https://travis-ci.org/janbiasi/remlog) [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+[![Build Status](https://travis-ci.org/namics/remlog.svg?branch=develop)](https://travis-ci.org/namics/remlog) [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
 ## node-remlog (stands for _Remote Log in Node.js_)
 
