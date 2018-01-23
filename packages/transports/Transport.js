@@ -1,86 +1,87 @@
-const path = require("path");
-const { Scheme } = require("@namics/remlog-scheme");
-const { Logger } = require("@namics/remlog-debug");
-const {
-  createStream,
-  checkReadWritePermission
-} = require("./FileSystem/stream");
+const path = require('path');
+const { Scheme } = require('@namics/remlog-scheme');
+const { Logger } = require('@namics/remlog-debug');
+const { createStream, checkReadWritePermission } = require('./FileSystem/stream');
 
-const TRANSPORT_ID = "@namics/remlog-transports/Transport";
-const GENERIC_TRANSPORT_LOGFILE = path.resolve(process.cwd(), "remlog.json");
+const TRANSPORT_ID = '@namics/remlog-transports/Transport';
+const GENERIC_TRANSPORT_LOGFILE = path.resolve(process.cwd(), 'remlog.json');
 
 const initialPayload = {
-  $empty: true
+	$empty: true
 };
 
 class Transport {
-  constructor() {
-    this.logger = new Logger(`Transport(${this.constructor.name})`);
-  }
+	constructor() {
+		this.logger = new Logger(`Transport(${this.constructor.name})`);
+	}
 
-  /**
-   * Validates a payload against the scheme definition
-   * @param {Object?} payload
-   * @returns {<@namics/remlog-scheme.Scheme>|boolean}
-   */
-  validate(payload = initialPayload) {
-    const scheme = new Scheme(payload);
-    const validation = scheme.validate();
+	get isTransport() {
+		return true;
+	}
 
-    let error = [];
+	/**
+	 * Validates a payload against the scheme definition
+	 * @param {Object?} payload
+	 * @returns {<@namics/remlog-scheme.Scheme>|boolean}
+	 */
+	validate(payload = initialPayload) {
+		const scheme = new Scheme(payload);
+		const validation = scheme.validate();
 
-    if (validation.length >= 0) {
-      validation.forEach((validationItem, index) => {
-        this.logger.error(`[#${index + 1}] ${validationItem.error.message}`);
-      });
+		let error = [];
 
-      error = validation;
-    }
+		if (validation.length >= 0) {
+			validation.forEach((validationItem, index) => {
+				this.logger.error(
+					`[${validationItem.key}#${index + 1}] ${validationItem.error.message}`
+				);
+			});
 
-    return {
-      valid: !!(validation.length === 0),
-      error: error,
-      scheme
-    };
-  }
+			error = validation;
+		}
 
-  /**
-   * @abstract
-   * @param {Object?} payload
-   */
-  trace(payload = {}) {
-    this.logger.error(
-      `${this.constructor.name} does not implement the method .trace()`
-    );
-  }
+		return {
+			valid: !!(validation.length === 0),
+			error: error,
+			scheme
+		};
+	}
 
-  /**
-   * Save the current trace to the internal logfile
-   * @param {Object?} payload
-   */
-  saveTraceToLock(payload = {}, logfile = GENERIC_TRANSPORT_LOGFILE) {
-    new Promise((resolve, reject) => {
-      checkReadWritePermission(logfile)
-        .then(() => {
-          resolve();
-        })
-        .catch(() => {
-          const stream = createStream(logfile);
-          stream.write("[]");
-          resolve();
-        });
-    })
-      .then(() => {
-        const contents = require(logfile);
-        contents.push(payload);
+	/**
+	 * @abstract
+	 * @param {Object?} payload
+	 */
+	trace(payload = {}) {
+		this.logger.error(`${this.constructor.name} does not implement the method .trace()`);
+	}
 
-        const stream = createStream(logfile);
-        stream.write(JSON.stringify(contents));
-      })
-      .catch(e => {
-        this.logger.error(e.message);
-      });
-  }
+	/**
+	 * Save the current trace to the internal logfile
+	 * @param {Object?} payload
+	 */
+	saveTraceToLock(payload = {}, logfile = GENERIC_TRANSPORT_LOGFILE) {
+		new Promise((resolve, reject) => {
+			checkReadWritePermission(logfile)
+				.then(() => {
+					resolve();
+				})
+				.catch(() => {
+					const stream = createStream(logfile);
+					stream.write('[]');
+					resolve();
+				});
+		})
+			.then(() => {
+				const contents = require(logfile);
+				contents.push(payload);
+
+				const stream = createStream(logfile);
+				stream.write(JSON.stringify(contents));
+			})
+			.catch(e => {
+				this.logger.error(e.message);
+			});
+	}
 }
 
 Transport.id = TRANSPORT_ID;
