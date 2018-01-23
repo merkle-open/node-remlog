@@ -4,3 +4,4 @@ test
 webpack.config.js
 *.log
 yarn.lock
+node_modules
