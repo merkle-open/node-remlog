@@ -1,0 +1,14 @@
+import { Transport } from '@namics/remlog-transports';
+
+const TRANSPORT_ID = '<%= name %>';
+
+class <%= name %> extends Transport {
+	trace(payload, resolve) {
+		// Add your trace stuff here ...
+		resolve();
+	}
+}
+
+<%= name %>.id = TRANSPORT_ID;
+
+export default <%= name %>;
