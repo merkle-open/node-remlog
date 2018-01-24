@@ -1,8 +1,8 @@
 const fs = require('fs');
-const Transport = require('../Transport');
 const path = require('path');
 const { getLogLevelName } = require('@namics/remlog-utils');
-const { createIntelligentStream } = require('./stream');
+const Transport = require('../src/Transport');
+const { createIntelligentStream } = require('../src/stream');
 
 const CWD = path.resolve(process.cwd());
 const PACKAGE_PATH = path.resolve(__dirname, '..');

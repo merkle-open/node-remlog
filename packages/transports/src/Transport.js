@@ -1,7 +1,7 @@
 const path = require('path');
 const { Scheme } = require('@namics/remlog-scheme');
 const { Logger } = require('@namics/remlog-debug');
-const { createStream, checkReadWritePermission } = require('./FileSystem/stream');
+const { createStream, checkReadWritePermission } = require('./stream');
 
 const TRANSPORT_ID = '@namics/remlog-transports/Transport';
 const GENERIC_TRANSPORT_LOGFILE = path.resolve(process.cwd(), 'remlog.json');
