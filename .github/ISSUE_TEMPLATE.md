@@ -8,10 +8,10 @@ ISSUES MISSING IMPORTANT INFORMATION MIGHT BE CLOSED WITHOUT INVESTIGATION.
 
 <!-- Check one of the following options with "x" -->
 
-[ ] Regression (behavior that used to work and stopped working in a new release)
-[ ] Bug report <!-- Please search github for a similar issue before submitting -->
-[ ] Feature request
-[ ] Documentation issue or request
+* [ ] Regression (behavior that used to work and stopped working in a new release)
+* [ ] Bug report <!-- Please search github for a similar issue before submitting -->
+* [ ] Feature request
+* [ ] Documentation issue or request
 
 ## Current behavior
 
