@@ -5,7 +5,7 @@ There is a CLI package which helps you setting up your local log-server within a
 ###### Contents
 
 ```js
-const { start, request } = require("@namics/remlog-cli");
+const { start, request } = require('@namics/remlog-cli');
 ```
 
 ## CLI
@@ -20,7 +20,19 @@ remlog <command> --help
 
 ### server
 
-For the ease of usage it's also possible to run the server from the CLI within a few seconds. It accepts a port option (`-p` or `--port`) and a transport option (`-t` or `--transport`). To check all available transports or get more information how they work please refer to the [transports package](https://github.com/janbiasi/remlog/tree/develop/packages/transports).
+For the ease of usage it's also possible to run the server from the CLI within a few seconds. It accepts a port option (`-p` or `--port`) and a transport option (`-t` or `--transport`) which are required. To check all available transports or get more information how they work please refer to the [transports package](https://github.com/janbiasi/remlog/tree/develop/packages/transports).
+
+###### All Options
+
+* `-p` / `--port` Set the listening port of the server
+* `-s` / `--secure` Enable SSL on the server, requires `-k`, `-e` [, `-r`]
+* `-t` / `--transport` Set the selected transport variant
+* `-c` / `--cors` A comma separated list of whitelisted CORS hosts, default: `*`
+* `-k` / `--ssl-key` Set the path to the SSL key, only works if `--secure` is enabled
+* `-e` / `--ssl-cert` Set the path to the SSL certificate, only works if `--secure` is enabled
+* `-r` / `--ssl-passphrase` Optional: Enter passphrase for SSL certificate
+
+#### Example
 
 ```bash
 yarn global add @namics/remlog-cli # install the CLI

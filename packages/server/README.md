@@ -16,16 +16,32 @@ There are a few endpoints you should know first:
 * `/logs.json` will return an array of JSON objects representing all your logs
 * `/logs/<log-id>.json` will show you a single log entry in JSON format
 
-### Example
+### Examples
 
 ```js
 new require('@namics/remlog-server')
-    .Server({
-        port: 8123,
-        transport: `@namics/remlog-transports/Console`, // default
-        cors: ['*'] // default
-    })
-    .start();
+	.Server({
+		port: 8123,
+		transport: `@namics/remlog-transports/Console`, // default
+		cors: ['*'] // default
+	})
+	.start();
+```
+
+```js
+new require('@namics/remlog-server')
+	.Server({
+		port: 9001,
+		transport: `@namics/remlog-transports/FileSystem`,
+		cors: ['my-domain.com', 'remote.namics.com'],
+		// enables SSL on the server
+		ssl: {
+			key: './ssl/my-domain/key.pem',
+			cert: './ssl/my-domain/cert.pem',
+			passphrase: 'k12Sh1$£1e3^7VcaR#t'
+		}
+	})
+	.start();
 ```
 
 ### Sending a trace to the Server via AJAX
@@ -37,14 +53,14 @@ import axios from 'axios';
 import { LOGLEVEL, getTraceUrl } from '@namics/remlog-utils';
 
 const serverConfig = {
-    host: '127.0.0.1',
-    port: '<your-server-port>'
+	host: '127.0.0.1',
+	port: '<your-server-port>'
 };
 
 axios.post(getTraceUrl(serverConfig), {
-    shortMessage: 'Hey you!',
-    fullMessage: 'Blablabla',
-    level: LOGLEVEL.INFO
+	shortMessage: 'Hey you!',
+	fullMessage: 'Blablabla',
+	level: LOGLEVEL.INFO
 });
 ```
 
