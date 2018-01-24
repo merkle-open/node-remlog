@@ -27,7 +27,8 @@
 		"test": "ava --tap | tap-diff",
 		"test:watch": "ava --no-cache --watch",
 		"commit": "./node_modules/.bin/git-cz",
-		"generate-changelog": "./node_modules/.bin/conventional-changelog -p angular -i CHANGELOG.md -s  -r 0 --lernaPackage @namics/remlog-transports && git add CHANGELOG.md"
+		"generate-changelog":
+			"./node_modules/.bin/conventional-changelog -p angular -i CHANGELOG.md -s  -r 0 --lernaPackage @namics/remlog-transports && git add CHANGELOG.md"
 	},
 	"dependencies": {
 		"@namics/remlog-debug": "0.1.4",
