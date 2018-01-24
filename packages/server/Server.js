@@ -14,8 +14,7 @@ const { Logger } = require('@namics/remlog-debug');
 const { Scheme } = require('@namics/remlog-scheme');
 const {
 	ConsoleTransport,
-	getTransportNameFromId,
-	getTransportById,
+	getTransport,
 	GENERIC_TRANSPORT_LOGFILE
 } = require('@namics/remlog-transports');
 const pkg = require('./package.json');
@@ -39,7 +38,7 @@ class Server {
 
 		logger.info(`Attaching transport ${getTransportNameFromId(this.transportId)} ...`);
 		logger.info(`Setting CORS restriction to ${this.config.cors.join(', ')} ...`);
-		const SelectedTransport = getTransportById(this.transportId);
+		const SelectedTransport = getTransport(this.transportId);
 		this.transport = new SelectedTransport();
 	}
 

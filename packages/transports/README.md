@@ -15,7 +15,7 @@ You can simply add the transports to your server by the constructor or CLI argum
 
 ```js
 new require('@namics/remlog-server').Server({
-    transport: `@namics/remlog-transports/FileSystem`,
+	transport: `@namics/remlog-transports/FileSystem`
 });
 ```
 
@@ -23,32 +23,40 @@ new require('@namics/remlog-server').Server({
 remlog server -t @namics/remlog-transports/Console
 ```
 
-### Creating a new transport
+### Creating a custom transport
+
+> **Rules:** Each custom transport must have a static field called `id` which represents the transports identifier. If you create a transport locally or in NPM please make sure that your main export of the package/file is your custom Transport class extension.
 
 ```js
 const { Transport } = require('@namics/remlog-transports');
 const connection = require('mysql').createConnection({
-    host: 'localhost',
-    user: 'me',
-    password: 'secret',
-    database: 'my_db',
+	host: 'localhost',
+	user: 'me',
+	password: 'secret',
+	database: 'my_db'
 });
 
-class CustomTransport extends Transport {
-    /**
-     * This method will be responsible for the trace of logs
-     *
-     * @param {Object} payload          The log payload
-     * @param {Function} resolve        Will resolve the trace and save it to the internal file
-     */
-    trace(payload, resolve) {
-        connection.connect();
-        connection.query('INSERT INTO LOGS ...');
-        connection.end();
+const TRANSPORT_ID = 'my-custom-transport';
 
-        resolve();
-    }
+class CustomTransport extends Transport {
+	id = TRANSPORT_ID;
+
+	/**
+	 * This method will be responsible for the trace of logs
+	 *
+	 * @param {Object} payload          The log payload
+	 * @param {Function} resolve        Will resolve the trace and save it to the internal file
+	 */
+	trace(payload, resolve) {
+		connection.connect();
+		connection.query('INSERT INTO LOGS ...');
+		connection.end();
+
+		resolve();
+	}
 }
+
+export default CustomTransport;
 ```
 
 > Review the [Changelog](/packages/transports/CHANGELOG.md)
