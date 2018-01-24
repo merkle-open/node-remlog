@@ -30,7 +30,11 @@ const getTransport = (transportName = '') => {
 			return getInternalTransportById(transportName);
 		case TRANSPORT_TYPES.LOCAL:
 		case TRANSPORT_TYPES.NPM:
-			return require(transportName);
+			try {
+				return require(transportName);
+			} catch (e) {
+				throw new Error(`Failed getting custom transport from ${transportName}`);
+			}
 		default:
 			throw new Error(`Could not resolve transport ${transportName} (${transportType})`);
 	}
