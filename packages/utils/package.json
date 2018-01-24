@@ -1,6 +1,6 @@
 {
 	"name": "@namics/remlog-utils",
-	"version": "0.1.5",
+	"version": "0.1.6",
 	"description": "",
 	"main": "./lib/index.js",
 	"keywords": [
@@ -24,8 +24,7 @@
 		"test": "ava --tap | tap-diff",
 		"commit": "./node_modules/.bin/git-cz",
 		"build": "./node_modules/.bin/babel src --out-dir lib",
-		"generate-changelog":
-			"./node_modules/.bin/conventional-changelog -p angular -i CHANGELOG.md -s  -r 0 --lernaPackage @namics/remlog-utils && git add CHANGELOG.md"
+		"generate-changelog": "./node_modules/.bin/conventional-changelog -p angular -i CHANGELOG.md -s  -r 0 --lernaPackage @namics/remlog-utils && git add CHANGELOG.md"
 	},
 	"publishConfig": {
 		"access": "public"
