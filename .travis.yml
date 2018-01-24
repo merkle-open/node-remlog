@@ -8,8 +8,8 @@ before_install:
   - npm i -g lerna
 install: 
   - npm install
-  - npm bootstrap
-  - npm build
+  - npm run bootstrap
+  - npm run build
 matrix:
   fast_finish: true
 cache: false
