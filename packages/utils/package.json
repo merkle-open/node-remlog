@@ -2,7 +2,7 @@
 	"name": "@namics/remlog-utils",
 	"version": "0.1.7",
 	"description": "",
-	"main": "./lib/index.js",
+	"main": "./dist/index.js",
 	"keywords": [
 		"remote",
 		"logging",
@@ -23,9 +23,8 @@
 	"scripts": {
 		"test": "ava --tap | tap-diff",
 		"commit": "./node_modules/.bin/git-cz",
-		"build": "./node_modules/.bin/babel src --out-dir lib --ignore '**/*.test.js'",
-		"generate-changelog":
-			"./node_modules/.bin/conventional-changelog -p angular -i CHANGELOG.md -s  -r 0 --lernaPackage @namics/remlog-utils && git add CHANGELOG.md"
+		"build": "rollup -c rollup.config.js",
+		"generate-changelog": "./node_modules/.bin/conventional-changelog -p angular -i CHANGELOG.md -s  -r 0 --lernaPackage @namics/remlog-utils && git add CHANGELOG.md"
 	},
 	"publishConfig": {
 		"access": "public"
@@ -36,6 +35,10 @@
 		"commitizen": "2.9.6",
 		"conventional-changelog-cli": "1.3.5",
 		"cz-conventional-changelog": "2.1.0",
+		"rollup": "^0.55.0",
+		"rollup-plugin-json": "^2.3.0",
+		"rollup-plugin-node-resolve": "^3.0.2",
+		"rollup-plugin-uglify": "^3.0.0",
 		"tap-diff": "0.1.1"
 	},
 	"dependencies": {
