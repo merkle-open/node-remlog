@@ -31,7 +31,7 @@
         "access": "public"
     },
     "dependencies": {
-        "@namics/remlog-debug": "0.1.7",
+        "@namics/remlog-debug": "0.1.8",
         "@namics/remlog-scheme": "0.1.7",
         "@namics/remlog-transports": "0.1.8",
         "@namics/remlog-utils": "0.1.8",
