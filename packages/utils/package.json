@@ -23,8 +23,9 @@
 	"scripts": {
 		"test": "ava --tap | tap-diff",
 		"commit": "./node_modules/.bin/git-cz",
-		"build": "./node_modules/.bin/babel src --out-dir lib",
-		"generate-changelog": "./node_modules/.bin/conventional-changelog -p angular -i CHANGELOG.md -s  -r 0 --lernaPackage @namics/remlog-utils && git add CHANGELOG.md"
+		"build": "./node_modules/.bin/babel src --out-dir lib --ignore '**/*.test.js'",
+		"generate-changelog":
+			"./node_modules/.bin/conventional-changelog -p angular -i CHANGELOG.md -s  -r 0 --lernaPackage @namics/remlog-utils && git add CHANGELOG.md"
 	},
 	"publishConfig": {
 		"access": "public"
