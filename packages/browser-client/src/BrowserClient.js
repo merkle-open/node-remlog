@@ -1,4 +1,4 @@
-import { version } from './package.json';
+import { version } from '../package.json';
 import { getTracerImageUrl } from '@namics/remlog-utils/src';
 
 const defaultConfig = {
@@ -44,7 +44,4 @@ class BrowserClient {
 	}
 }
 
-exports = module.exports = {
-	BrowserClient,
-	defaultConfig
-};
+export { BrowserClient, defaultConfig };
