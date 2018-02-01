@@ -3,8 +3,8 @@
 The browser clients helps you creating remote logs inside any browser (supports IE7+, Chrome, Firefox and Safari) by creating an image tag and appending it to the body of your website. It is recommended to add the package to your build or use a CDN like unkpg.
 
 ```html
-<script src="./node_modules/@namics/remlog-browser-client/dist/index.js"></script>
-<script src="https://unpkg.com/@namics/remlog-browser-client@0.1.9/dist/index.js"></script>
+<script src="./node_modules/@namics/remlog-browser-client/dist/browser-client.js"></script>
+<script src="https://unpkg.com/@namics/remlog-browser-client/dist/browser-client.js"></script>
 ```
 
 ### Using the web
@@ -30,18 +30,15 @@ logger.send('something went wrong!', {
 ### Using the module
 
 ```js
-const BrowserClient = require('@namics/remlog-browser-client');
+import { BrowserClient } from '@namics/remlog-browser-client';
 
 const remoteLog = new BrowserClient({
 	host: 'http://remlog-webserver.com',
 	port: 8689,
-	remote: {
-		host: 'http://remlog-tcp-server.com',
-		port: 2761
-	}
+	secure: false
 });
 
-remoteLog.send('Some logging message', /* opt: */ {
+remoteLog.send('Some logging message', /* optional: */ {
 	level: 1,
 	line: 982
 	file: 'someFile.js'
