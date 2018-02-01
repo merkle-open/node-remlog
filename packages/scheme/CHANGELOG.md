@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 <a name="0.1.6"></a>
 ## [0.1.6](https://github.com/namics/node-remlog/compare/@namics/remlog-scheme@0.1.6...@namics/remlog-scheme@0.1.6) (2018-02-01)
+=======
+<a name="0.1.7"></a>
+## [0.1.7](https://github.com/namics/node-remlog/compare/@namics/remlog-scheme@0.1.7...@namics/remlog-scheme@0.1.7) (2018-01-25)
+>>>>>>> develop
 
 
 ### Bug Fixes

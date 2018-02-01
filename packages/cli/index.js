@@ -6,6 +6,7 @@ const https = require('https');
 const { red, green } = require('chalk');
 const { Server } = require('@namics/remlog-server');
 const { URLS, getTraceUrl } = require('@namics/remlog-utils');
+
 const CMD_DIR = path.resolve(process.cwd());
 const TEMPLATE_PATH = path.resolve(__dirname, 'template');
 const TemplatePaths = {
