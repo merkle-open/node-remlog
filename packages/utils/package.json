@@ -1,6 +1,6 @@
 {
 	"name": "@namics/remlog-utils",
-	"version": "0.1.7",
+	"version": "0.1.8",
 	"description": "",
 	"main": "./src/index.js",
 	"keywords": [
@@ -24,8 +24,7 @@
 		"test": "ava --tap | tap-diff",
 		"commit": "./node_modules/.bin/git-cz",
 		"build": "rollup -c rollup.config.js",
-		"generate-changelog":
-			"./node_modules/.bin/conventional-changelog -p angular -i CHANGELOG.md -s  -r 0 --lernaPackage @namics/remlog-utils && git add CHANGELOG.md"
+		"generate-changelog": "./node_modules/.bin/conventional-changelog -p angular -i CHANGELOG.md -s  -r 0 --lernaPackage @namics/remlog-utils && git add CHANGELOG.md"
 	},
 	"publishConfig": {
 		"access": "public"
