@@ -1,5 +1,5 @@
-<a name="0.1.11"></a>
-## [0.1.11](https://github.com/namics/node-remlog/compare/@namics/remlog-cli@0.1.11...@namics/remlog-cli@0.1.11) (2018-02-01)
+<a name="0.1.14"></a>
+## [0.1.14](https://github.com/namics/node-remlog/compare/@namics/remlog-cli@0.1.14...@namics/remlog-cli@0.1.14) (2018-02-01)
 
 
 ### Bug Fixes

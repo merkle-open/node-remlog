@@ -1,6 +1,6 @@
 {
 	"name": "@namics/remlog-transports",
-	"version": "0.1.10",
+	"version": "0.2.0",
 	"description": "",
 	"main": "index.js",
 	"keywords": [
@@ -30,9 +30,9 @@
 		"generate-changelog": "./node_modules/.bin/conventional-changelog -p angular -i CHANGELOG.md -s  -r 0 --lernaPackage @namics/remlog-transports && git add CHANGELOG.md"
 	},
 	"dependencies": {
-		"@namics/remlog-debug": "0.1.9",
-		"@namics/remlog-scheme": "0.1.9",
-		"@namics/remlog-utils": "0.1.10",
+		"@namics/remlog-debug": "0.2.0",
+		"@namics/remlog-scheme": "0.2.0",
+		"@namics/remlog-utils": "0.2.0",
 		"chalk": "2.3.0",
 		"semver": "^5.5.0"
 	},

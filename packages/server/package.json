@@ -1,6 +1,6 @@
 {
     "name": "@namics/remlog-server",
-    "version": "0.1.12",
+    "version": "0.2.0",
     "description": "",
     "main": "index.js",
     "keywords": [
@@ -31,10 +31,10 @@
         "access": "public"
     },
     "dependencies": {
-        "@namics/remlog-debug": "0.1.9",
-        "@namics/remlog-scheme": "0.1.9",
-        "@namics/remlog-transports": "0.1.10",
-        "@namics/remlog-utils": "0.1.10",
+        "@namics/remlog-debug": "0.2.0",
+        "@namics/remlog-scheme": "0.2.0",
+        "@namics/remlog-transports": "0.2.0",
+        "@namics/remlog-utils": "0.2.0",
         "body-parser": "1.18.2",
         "compression": "1.7.1",
         "cors": "^2.8.4",
