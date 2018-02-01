@@ -11,5 +11,5 @@ export default {
 		file: './dist/browser-client.js',
 		sourcemap: true
 	},
-	plugins: [json(), resolve(), uglify()]
+	plugins: [json(), resolve()]
 };

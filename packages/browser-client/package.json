@@ -6,7 +6,8 @@
 	"scripts": {
 		"test": "ava --tap | tap-diff",
 		"test:watch": "ava --no-cache --watch",
-		"build": "rollup -c rollup.config.js",
+		"build": "rollup -c",
+		"dev": "rollup -c -w",
 		"commit": "./node_modules/.bin/git-cz",
 		"generate-changelog":
 			"./node_modules/.bin/conventional-changelog -p angular -i CHANGELOG.md -s  -r 0 --lernaPackage @namics/remlog-browser-client && git add CHANGELOG.md"
@@ -51,6 +52,7 @@
 		"rollup-plugin-json": "^2.3.0",
 		"rollup-plugin-node-resolve": "^3.0.2",
 		"rollup-plugin-uglify": "^3.0.0",
+		"rollup-watch": "^4.3.1",
 		"tap-diff": "0.1.1"
 	},
 	"ava": {

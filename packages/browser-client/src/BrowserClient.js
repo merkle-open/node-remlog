@@ -1,10 +1,12 @@
 import { version } from '../package.json';
-import { getTracerImageUrl } from '@namics/remlog-utils/src';
 
 const defaultConfig = {
 	host: '0.0.0.0',
-	port: '80'
+	port: '80',
+	secure: false
 };
+
+let traceId = 1;
 
 class BrowserClient {
 	constructor(config = defaultConfig) {
@@ -26,6 +28,18 @@ class BrowserClient {
 		};
 	}
 
+	encodePayloadForURL(payload) {
+		return encodeURIComponent(JSON.stringify(payload));
+	}
+
+	getTracerImageURL(config = {}, payload) {
+		const { host, port, secure } = config;
+		const protocol = secure ? 'https' : 'http';
+		const encodedPayload = this.encodePayloadForURL(payload);
+
+		return `${protocol}://${host}:${port}/tracer.jpg?payload=${encodedPayload}`;
+	}
+
 	send(message, data = {}) {
 		if (typeof message === 'string') {
 			data.shortMessage = message;
@@ -33,12 +47,20 @@ class BrowserClient {
 			data = message || {};
 		}
 
-		const img = document.createElement('img');
+		const img = new Image();
 		const payload = this.getScheme(data);
+		const url = this.getTracerImageURL(this.config, payload);
+		const id = `remlog-trace-${traceId++}-${url.length}`;
 
-		img.src = getTracerImageUrl(this.config, payload);
+		img.src = url;
 		img.width = 0;
 		img.height = 0;
+		img.id = id;
+		img.alt = id;
+
+		img.addEventListener('load', () => {
+			document.querySelector(`#${id}`).remove();
+		});
 
 		document.body.appendChild(img);
 	}
