@@ -1,6 +1,7 @@
 CHANGELOG.md
 README.md
 test
+src
 webpack.config.js
 *.log
 yarn.lock
