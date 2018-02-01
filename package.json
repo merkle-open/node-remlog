@@ -15,20 +15,19 @@
 	"license": "MIT",
 	"private": true,
 	"scripts": {
-		"build": "./node_modules/.bin/lerna run build",
-		"test": "./node_modules/.bin/lerna run test",
-		"bootstrap": "./node_modules/.bin/lerna bootstrap --hoist",
-		"testsuite": "./node_modules/.bin/lerna-terminal test",
-		"generate-changelog": "./node_modules/.bin/lerna run generate-changelog",
-		"generate-changelog-terminal": "./node_modules/.bin/lerna-terminal generate-changelog",
+		"build": "lerna run build",
+		"test": "lerna run test",
+		"bootstrap": "lerna bootstrap --hoist",
+		"testsuite": "lerna-terminal test",
+		"generate-changelog": "lerna run generate-changelog",
+		"generate-changelog-terminal": "lerna-terminal generate-changelog",
 		"clean-package-lock": "rm -rf ./**/*package-lock.json",
 		"clean-remlog-files": "rm -rf ./**/remlog.json ./**/remlog.log",
 		"prettier": "./hooks/prettier.sh",
 		"precommit": "yarn run prettier && yarn run clean-remlog-files",
-		"commit": "./node_modules/.bin/git-cz",
+		"commit": "git-cz",
 		"prepare-release": "yarn run prettier && yarn run test && yarn run generate-changelog",
-		"publish-packages":
-			"npm run prepare-release && ./node_modules/.bin/lerna publish --exact -m \"chore(release): Publish %v\""
+		"publish-packages": "lerna publish --exact -m \"chore(release): Publish new release\""
 	},
 	"config": {
 		"commitizen": {

@@ -1,6 +1,6 @@
 {
 	"name": "@namics/remlog-transports",
-	"version": "0.1.9",
+	"version": "0.1.10",
 	"description": "",
 	"main": "index.js",
 	"keywords": [
@@ -31,8 +31,8 @@
 	},
 	"dependencies": {
 		"@namics/remlog-debug": "0.1.9",
-		"@namics/remlog-scheme": "0.1.8",
-		"@namics/remlog-utils": "0.1.9",
+		"@namics/remlog-scheme": "0.1.9",
+		"@namics/remlog-utils": "0.1.10",
 		"chalk": "2.3.0",
 		"semver": "^5.5.0"
 	},

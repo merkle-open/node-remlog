@@ -13,6 +13,13 @@ const TemplatePaths = {
 	Transport: path.resolve(TEMPLATE_PATH, 'Transport.ejs')
 };
 
+/**
+ * Start the server via CLI
+ * @param {Number} port
+ * @param {string} transport
+ * @param {string} cors
+ * @param {Boolean} ssl
+ */
 const start = (port = Server.defaultConfig.port, transport, cors = '*', ssl) => {
 	if (typeof cors === 'string') {
 		cors = cors.split(',').map(host => host.trim());
@@ -30,6 +37,13 @@ const start = (port = Server.defaultConfig.port, transport, cors = '*', ssl) => 
 	return server;
 };
 
+/**
+ * Create a request from the CLI
+ * @param {Number} port
+ * @param {string} host
+ * @param {Boolean} secure
+ * @param {string} payload
+ */
 const request = (port = Server.defaultConfig.port, host = 'localhost', secure = false, payload) => {
 	const requestor = secure ? https : http;
 	let editablePayload;
@@ -84,6 +98,13 @@ const request = (port = Server.defaultConfig.port, host = 'localhost', secure = 
 	req.end();
 };
 
+/**
+ * Copy an EJS template to a certain destination path,
+ * with compilation data options (templating).
+ * @param {string} sourcePath
+ * @param {string} dest
+ * @param {Object} templateData
+ */
 const copyTemplate = (sourcePath, dest, templateData) => {
 	return new Promise((resolve, reject) => {
 		fs.readFile(path.resolve(CMD_DIR, sourcePath), (err, data) => {

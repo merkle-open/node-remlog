@@ -1,0 +1,18 @@
+<html>
+<head>
+	<title>BrowserClient - E2E test</title>
+</head>
+<body>
+	<script src="/dist/browser-client.js?123"></script>
+	<script>
+		var client = window.client = new remlog.BrowserClient({
+			host: '10.1.4.167',
+			port: 8189
+		});
+
+		client.send('This is a message from the client', {
+			level: 3
+		});
+	</script>
+</body>
+</html>
