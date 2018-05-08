@@ -1,12 +1,4 @@
 {
-	"devDependencies": {
-		"commitizen": "2.9.6",
-		"conventional-changelog-cli": "1.3.5",
-		"cz-conventional-changelog": "2.1.0",
-		"lerna": "2.0.0",
-		"lerna-terminal": "1.1.1",
-		"prettier": "1.10.2"
-	},
 	"name": "remlog",
 	"version": "0.1.0",
 	"main": "index.js",
@@ -19,6 +11,7 @@
 		"test": "lerna run test",
 		"bootstrap": "lerna bootstrap --hoist",
 		"testsuite": "lerna-terminal test",
+		"clean-lock": "rm -rf ./**/package-lock.json && npm run bootstrap",
 		"generate-changelog": "lerna run generate-changelog",
 		"generate-changelog-terminal": "lerna-terminal generate-changelog",
 		"clean-package-lock": "rm -rf ./**/*package-lock.json",
@@ -28,6 +21,14 @@
 		"commit": "git-cz",
 		"prepare-release": "yarn run prettier && yarn run test && yarn run generate-changelog",
 		"publish-packages": "lerna publish --exact -m \"chore(release): Publish new release\""
+	},
+	"devDependencies": {
+		"commitizen": "2.9.6",
+		"conventional-changelog-cli": "1.3.5",
+		"cz-conventional-changelog": "2.1.0",
+		"lerna": "2.0.0",
+		"lerna-terminal": "1.1.1",
+		"prettier": "1.10.2"
 	},
 	"config": {
 		"commitizen": {
