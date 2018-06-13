@@ -50,16 +50,13 @@ class BrowserClient {
 		const img = new Image();
 		const payload = this.getScheme(data);
 		const url = this.getTracerImageURL(this.config, payload);
-		const id = `remlog-trace-${traceId++}-${url.length}`;
 
 		img.src = url;
 		img.width = 0;
 		img.height = 0;
-		img.id = id;
-		img.alt = id;
 
 		img.addEventListener('load', () => {
-			document.querySelector(`#${id}`).remove();
+			document.body.removeChild(img);
 		});
 
 		document.body.appendChild(img);
