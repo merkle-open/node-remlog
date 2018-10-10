@@ -2,7 +2,7 @@
 	"name": "@namics/remlog-server",
 	"description": "",
 	"main": "index.js",
-	"version": "0.3.1",
+	"version": "0.3.2",
 	"keywords": [
 		"remote",
 		"logging",
@@ -31,10 +31,10 @@
 		"access": "public"
 	},
 	"dependencies": {
-		"@namics/remlog-debug": "0.2.1",
-		"@namics/remlog-scheme": "0.2.1",
+		"@namics/remlog-debug": "0.2.2",
+		"@namics/remlog-scheme": "0.2.2",
 		"@namics/remlog-transports": "0.2.0",
-		"@namics/remlog-utils": "0.2.1",
+		"@namics/remlog-utils": "0.2.2",
 		"body-parser": "1.18.2",
 		"compression": "1.7.1",
 		"cors": "^2.8.4",

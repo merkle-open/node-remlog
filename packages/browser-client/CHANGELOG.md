@@ -1,5 +1,5 @@
-<a name="0.2.3"></a>
-## [0.2.3](https://github.com/namics/node-remlog/compare/@namics/remlog-browser-client@0.2.3...@namics/remlog-browser-client@0.2.3) (2018-10-10)
+<a name="0.2.4"></a>
+## [0.2.4](https://github.com/namics/node-remlog/compare/@namics/remlog-browser-client@0.2.4...@namics/remlog-browser-client@0.2.4) (2018-10-10)
 
 
 ### Bug Fixes

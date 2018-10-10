@@ -1,6 +1,6 @@
 {
 	"name": "@namics/remlog-cli",
-	"version": "0.2.1",
+	"version": "0.2.2",
 	"description": "",
 	"main": "index.js",
 	"keywords": [
@@ -33,7 +33,7 @@
 	},
 	"dependencies": {
 		"@namics/remlog-server": "0.2.0",
-		"@namics/remlog-utils": "0.2.1",
+		"@namics/remlog-utils": "0.2.2",
 		"chalk": "2.3.0",
 		"commander": "2.13.0",
 		"ejs": "2.5.7"

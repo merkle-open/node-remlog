@@ -1,6 +1,6 @@
 {
 	"name": "@namics/remlog-browser-client",
-	"version": "0.2.4",
+	"version": "0.2.5",
 	"description": "",
 	"main": "./dist/browser-client.js",
 	"scripts": {
