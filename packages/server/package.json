@@ -2,6 +2,7 @@
 	"name": "@namics/remlog-server",
 	"description": "",
 	"main": "index.js",
+	"version": "0.3.1",
 	"keywords": [
 		"remote",
 		"logging",
@@ -20,8 +21,7 @@
 		"upg:test": "ava test --no-cache --tap | tap-diff",
 		"upg:test:watch": "ava test -- --watch",
 		"commit": "./node_modules/.bin/git-cz",
-		"generate-changelog":
-			"./node_modules/.bin/conventional-changelog -p angular -i CHANGELOG.md -s  -r 0 --lernaPackage @namics/remlog-server && git add CHANGELOG.md"
+		"generate-changelog": "./node_modules/.bin/conventional-changelog -p angular -i CHANGELOG.md -s  -r 0 --lernaPackage @namics/remlog-server && git add CHANGELOG.md"
 	},
 	"repository": {
 		"type": "git",
@@ -31,10 +31,10 @@
 		"access": "public"
 	},
 	"dependencies": {
-		"@namics/remlog-debug": "0.2.0",
-		"@namics/remlog-scheme": "0.2.0",
+		"@namics/remlog-debug": "0.2.1",
+		"@namics/remlog-scheme": "0.2.1",
 		"@namics/remlog-transports": "0.2.0",
-		"@namics/remlog-utils": "0.2.0",
+		"@namics/remlog-utils": "0.2.1",
 		"body-parser": "1.18.2",
 		"compression": "1.7.1",
 		"cors": "^2.8.4",
