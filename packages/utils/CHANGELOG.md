@@ -1,10 +1,14 @@
-<a name="0.1.10"></a>
-## [0.1.10](https://github.com/namics/node-remlog/compare/@namics/remlog-utils@0.1.9...@namics/remlog-utils@0.1.10) (2018-02-01)
+<a name="0.2.0"></a>
+# [0.2.0](https://github.com/namics/node-remlog/compare/@namics/remlog-utils@0.2.0...@namics/remlog-utils@0.2.0) (2018-10-10)
 
 
 ### Bug Fixes
 
+* **browser-client:** Add support for IE9-11 ([81887a2](https://github.com/namics/node-remlog/commit/81887a2))
 * **browser-client:** Automatically detached logged images from the DOM, see [#9](https://github.com/namics/node-remlog/issues/9) ([5467b65](https://github.com/namics/node-remlog/commit/5467b65))
+* **browser-client:** Fix build output to be transpiled to es2015 ([d29bb3d](https://github.com/namics/node-remlog/commit/d29bb3d))
+* **browser-client:** Important hotfix, fix main export field in NPM ([d9b0175](https://github.com/namics/node-remlog/commit/d9b0175))
+* **browser-client:** Remove tests temporarly ([38272ef](https://github.com/namics/node-remlog/commit/38272ef))
 * **browser-client:** Use Node import before webpack build ([6fc19c1](https://github.com/namics/node-remlog/commit/6fc19c1))
 * **server:** Fix CORS fallback issue and whitelist fetcher ([eb90171](https://github.com/namics/node-remlog/commit/eb90171))
 * **server:** Fix custom CORS setting ([bae88b4](https://github.com/namics/node-remlog/commit/bae88b4))
@@ -33,6 +37,7 @@
 
 ### BREAKING CHANGES
 
+* **browser-client:** Fix browser client v0.2
 * **utils:** Utils cannot be used for the Web anymore
 * **transports:** Transports weren't usable in Server mode
 * **server:** CORS settings now work on server
