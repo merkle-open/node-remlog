@@ -1,47 +1,50 @@
 {
-	"name": "@namics/remlog-cli",
-	"version": "0.2.2",
-	"description": "",
-	"main": "index.js",
-	"keywords": [
-		"remote",
-		"logging",
-		"remlog",
-		"node",
-		"debug",
-		"transport",
-		"@namics/remlog",
-		"remotely",
-		"server"
-	],
-	"bin": {
-		"remlog": "bin/remlog-cli.js"
-	},
-	"author": "Jan Biasi <biasijan@gmail.com>",
-	"license": "MIT",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/namics/node-remlog.git"
-	},
-	"publishConfig": {
-		"access": "public"
-	},
-	"scripts": {
-		"test": "exit 0",
-		"commit": "./node_modules/.bin/git-cz",
-		"generate-changelog":
-			"./node_modules/.bin/conventional-changelog -p angular -i CHANGELOG.md -s  -r 0 --lernaPackage @namics/remlog-cli && git add CHANGELOG.md"
-	},
-	"dependencies": {
-		"@namics/remlog-server": "0.2.0",
-		"@namics/remlog-utils": "0.2.2",
-		"chalk": "2.4.2",
-		"commander": "2.19.0",
-		"ejs": "2.6.1"
-	},
-	"devDependencies": {
-		"commitizen": "3.0.7",
-		"conventional-changelog-cli": "2.0.12",
-		"cz-conventional-changelog": "2.1.0"
-	}
+  "name": "@namics/remlog-cli",
+  "version": "0.2.2",
+  "description": "",
+  "main": "index.js",
+  "keywords": [
+    "remote",
+    "logging",
+    "remlog",
+    "node",
+    "debug",
+    "transport",
+    "@namics/remlog",
+    "remotely",
+    "server"
+  ],
+  "bin": {
+    "remlog": "bin/remlog-cli.js"
+  },
+  "author": "Jan Biasi <biasijan@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/namics/node-remlog.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "test": "exit 0",
+    "commit": "./node_modules/.bin/git-cz",
+    "generate-changelog": "./node_modules/.bin/conventional-changelog -p angular -i CHANGELOG.md -s  -r 0 --lernaPackage @namics/remlog-cli && git add CHANGELOG.md",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
+  },
+  "dependencies": {
+    "@namics/remlog-server": "0.2.0",
+    "@namics/remlog-utils": "0.2.2",
+    "chalk": "2.4.2",
+    "commander": "2.19.0",
+    "ejs": "2.6.1",
+    "snyk": "^1.189.0"
+  },
+  "devDependencies": {
+    "commitizen": "3.0.7",
+    "conventional-changelog-cli": "2.0.12",
+    "cz-conventional-changelog": "2.1.0"
+  },
+  "snyk": true
 }
