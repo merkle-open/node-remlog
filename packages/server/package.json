@@ -1,53 +1,56 @@
 {
-	"name": "@namics/remlog-server",
-	"description": "",
-	"main": "index.js",
-	"version": "0.3.2",
-	"keywords": [
-		"remote",
-		"logging",
-		"remlog",
-		"node",
-		"debug",
-		"transport",
-		"@namics/remlog",
-		"remotely",
-		"server"
-	],
-	"author": "Jan Biasi <biasijan@gmail.com>",
-	"license": "MIT",
-	"scripts": {
-		"test": "exit 0",
-		"upg:test": "ava test --no-cache --tap | tap-diff",
-		"upg:test:watch": "ava test -- --watch",
-		"commit": "./node_modules/.bin/git-cz",
-		"generate-changelog":
-			"./node_modules/.bin/conventional-changelog -p angular -i CHANGELOG.md -s  -r 0 --lernaPackage @namics/remlog-server && git add CHANGELOG.md"
-	},
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/namics/node-remlog.git"
-	},
-	"publishConfig": {
-		"access": "public"
-	},
-	"dependencies": {
-		"@namics/remlog-debug": "0.2.2",
-		"@namics/remlog-scheme": "0.2.2",
-		"@namics/remlog-transports": "0.2.0",
-		"@namics/remlog-utils": "0.2.2",
-		"body-parser": "1.18.3",
-		"compression": "1.7.4",
-		"cors": "2.8.5",
-		"express": "4.16.4",
-		"hbs": "4.0.3",
-		"helmet": "3.16.0"
-	},
-	"devDependencies": {
-		"ava": "1.3.1",
-		"commitizen": "3.0.7",
-		"conventional-changelog-cli": "2.0.12",
-		"cz-conventional-changelog": "2.1.0",
-		"tap-diff": "0.1.1"
-	}
+  "name": "@namics/remlog-server",
+  "description": "",
+  "main": "index.js",
+  "version": "0.3.2",
+  "keywords": [
+    "remote",
+    "logging",
+    "remlog",
+    "node",
+    "debug",
+    "transport",
+    "@namics/remlog",
+    "remotely",
+    "server"
+  ],
+  "author": "Jan Biasi <biasijan@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "test": "exit 0",
+    "upg:test": "ava test --no-cache --tap | tap-diff",
+    "upg:test:watch": "ava test -- --watch",
+    "commit": "./node_modules/.bin/git-cz",
+    "generate-changelog": "./node_modules/.bin/conventional-changelog -p angular -i CHANGELOG.md -s  -r 0 --lernaPackage @namics/remlog-server && git add CHANGELOG.md",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/namics/node-remlog.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@namics/remlog-debug": "0.2.2",
+    "@namics/remlog-scheme": "0.2.2",
+    "@namics/remlog-transports": "0.2.0",
+    "@namics/remlog-utils": "0.2.2",
+    "body-parser": "1.18.3",
+    "compression": "1.7.4",
+    "cors": "2.8.5",
+    "express": "4.16.4",
+    "hbs": "4.0.3",
+    "helmet": "3.16.0",
+    "snyk": "^1.190.0"
+  },
+  "devDependencies": {
+    "ava": "1.3.1",
+    "commitizen": "3.0.7",
+    "conventional-changelog-cli": "2.0.12",
+    "cz-conventional-changelog": "2.1.0",
+    "tap-diff": "0.1.1"
+  },
+  "snyk": true
 }
