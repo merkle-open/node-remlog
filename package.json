@@ -1,44 +1,53 @@
 {
-	"name": "remlog",
-	"version": "0.1.0",
-	"main": "index.js",
-	"repository": "https://github.com/namics/node-remlog.git",
-	"author": "Jan Biasi <biasijan@gmail.com>",
-	"license": "MIT",
-	"private": true,
-	"scripts": {
-		"build": "lerna run build",
-		"test": "lerna run test",
-		"bootstrap": "lerna bootstrap --hoist",
-		"postinstall": "run-p bootstrap",
-		"testsuite": "lerna-terminal test",
-		"clean": "run-s clean-*",
-		"clean-lerna": "lerna clean",
-		"clean-lock": "rimraf ./packages/*/package-lock.json",
-		"postclean": "npm run bootstrap",
-		"generate-changelog": "lerna run generate-changelog",
-		"generate-changelog-terminal": "lerna-terminal generate-changelog",
-		"clean-package-lock": "rimraf ./**/*package-lock.json",
-		"clean-remlog-files": "rimraf ./**/remlog.json ./**/remlog.log",
-		"prettier": "./hooks/prettier.sh",
-		"precommit": "run-s prettier clean-remlog-files",
-		"commit": "git-cz",
-		"prepare-release": "run-s prettier test generate-changelog",
-		"publish-packages": "lerna publish --exact -m \"chore(release): Publish new release\""
-	},
-	"devDependencies": {
-		"commitizen": "3.0.2",
-		"conventional-changelog-cli": "1.3.5",
-		"cz-conventional-changelog": "2.1.0",
-		"lerna": "2.0.0",
-		"lerna-terminal": "1.1.1",
-		"npm-run-all": "4.1.3",
-		"prettier": "1.10.2",
-		"rimraf": "2.6.2"
-	},
-	"config": {
-		"commitizen": {
-			"path": "./node_modules/cz-conventional-changelog"
-		}
-	}
+    "name": "remlog",
+    "version": "0.1.0",
+    "main": "index.js",
+    "repository": "https://github.com/namics/node-remlog.git",
+    "author": "Jan Biasi <biasijan@gmail.com>",
+    "license": "MIT",
+    "private": true,
+    "devDependencies": {
+        "commitizen": "3.1.1",
+        "conventional-changelog-cli": "2.0.21",
+        "cz-conventional-changelog": "2.1.0",
+        "lerna": "3.15.0",
+        "lerna-terminal": "1.4.2",
+        "npm-run-all": "4.1.5",
+        "prettier": "1.18.2",
+        "rimraf": "2.6.3"
+    },
+    "config": {
+        "commitizen": {
+            "path": "./node_modules/cz-conventional-changelog"
+        }
+    },
+    "dependencies": {
+        "@namics/remlog-server": "0.3.2",
+        "@namics/remlog-transports": "0.3.2",
+        "ava": "2.2.0",
+        "babel-minify": "0.2.0",
+        "babel-plugin-transform-class-properties": "6.24.1",
+        "babel-preset-env": "1.6.1",
+        "babel-preset-es2015": "6.24.1",
+        "babel-register": "6.26.0",
+        "babel-runtime": "6.26.0",
+        "body-parser": "1.18.2",
+        "browser-env": "3.2.6",
+        "chalk": "2.4.2",
+        "commander": "2.20.0",
+        "compression": "1.7.4",
+        "cors": "2.8.5",
+        "ejs": "2.6.2",
+        "expose-loader": "0.7.5",
+        "express": "4.17.1",
+        "express-handlebars": "3.1.0",
+        "helmet": "3.18.0",
+        "rollup": "1.16.7",
+        "rollup-plugin-json": "4.0.0",
+        "rollup-plugin-node-resolve": "5.2.0",
+        "rollup-plugin-uglify": "6.0.2",
+        "semver": "6.2.0",
+        "shortid": "2.2.14",
+        "tap-diff": "0.1.1"
+    }
 }

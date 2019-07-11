@@ -1,6 +1,3 @@
-require('./registerHelper');
-require('./registerPartials');
-
 const fs = require('fs');
 const path = require('path');
 const http = require('http');

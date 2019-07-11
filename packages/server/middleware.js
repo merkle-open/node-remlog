@@ -4,10 +4,16 @@ const express = require('express');
 const compression = require('compression');
 const bodyParser = require('body-parser');
 const helmet = require('helmet');
+const expressHandlebars = require('express-handlebars');
 const { Logger } = require('@namics/remlog-debug');
+const helpers = require('./registerHelper');
 const pkg = require('./package.json');
 
 const logger = new Logger('Middleware');
+const hbs = expressHandlebars.create({
+	helpers,
+	partialsDir: path.resolve(__dirname, 'views', 'partials')
+});
 
 exports = module.exports = (server, config = {}) => {
 	server.use(helmet());
@@ -56,7 +62,7 @@ exports = module.exports = (server, config = {}) => {
 	// view rendering
 	server.set('view engine', 'html');
 	server.set('views', path.join(__dirname, 'views'));
-	server.engine('html', require('hbs').__express);
+	server.engine('html');
 
 	// settings default headers
 	server.use((req, res, next) => {
