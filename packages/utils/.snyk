@@ -66,3 +66,8 @@ patch:
         patched: '2019-07-04T01:05:18.176Z'
     - babel-cli > babel-register > babel-core > babel-helpers > babel-template > babel-traverse > babel-types > lodash:
         patched: '2019-07-04T01:05:18.176Z'
+  SNYK-JS-HTTPSPROXYAGENT-469131:
+    - snyk > proxy-agent > https-proxy-agent:
+        patched: '2019-10-05T01:05:14.590Z'
+    - snyk > proxy-agent > pac-proxy-agent > https-proxy-agent:
+        patched: '2019-10-05T01:05:14.590Z'

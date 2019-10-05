@@ -45,7 +45,7 @@
   },
   "dependencies": {
     "babel-cli": "6.26.0",
-    "snyk": "^1.189.0"
+    "snyk": "^1.231.0"
   },
   "snyk": true
 }
