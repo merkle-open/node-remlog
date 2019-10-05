@@ -35,7 +35,7 @@
     "@namics/remlog-debug": "0.2.2",
     "@namics/remlog-scheme": "0.2.2",
     "@namics/remlog-utils": "0.2.2",
-    "snyk": "^1.192.0"
+    "snyk": "^1.231.0"
   },
   "devDependencies": {
     "chalk": "2.4.2",
