@@ -1,3 +1,5 @@
+> :warning: **Due to modern technologies this tool is no longer being developed** :warning:
+
 # @namics/remlog-debug
 
 This package is used for debugging inside the remlog module.

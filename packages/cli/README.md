@@ -1,3 +1,5 @@
+> :warning: **Due to modern technologies this tool is no longer being developed** :warning:
+
 # @namics/remlog-cli
 
 There is a CLI package which helps you setting up your local log-server within a few seconds. It has also built-in support for testing traces.
