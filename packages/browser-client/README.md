@@ -1,3 +1,5 @@
+> :warning: **Due to modern technologies this tool is no longer being developed** :warning:
+
 # @namics/remlog-browser-client
 
 The browser clients helps you creating remote logs inside any browser (supports IE7+, Chrome, Firefox and Safari) by creating an image tag and appending it to the body of your website. It is recommended to add the package to your build or use a CDN like unkpg.
