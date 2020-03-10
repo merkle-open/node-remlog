@@ -1,5 +1,3 @@
-> :warning: **Due to modern technologies this tool is no longer being developed** :warning:
-
 # @namics/remlog-transports
 
 Transports are the way where your logs will be stored, for example temporary in the console, in a logfile or on a database etc. There are currently 2 transports supported:
